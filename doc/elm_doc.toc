@@ -10,4 +10,5 @@
 \contentsline {subsubsection}{\numberline {1.1.2.2}商家用户需求}{1}{section*.8}%
 \contentsline {subsubsection}{\numberline {1.1.2.3}骑手需求?}{2}{section*.9}%
 \contentsline {section}{\numberline {1.2}非功能需求}{2}{section*.10}%
+\contentsline {section}{\numberline {1.3}UML图}{2}{section*.11}%
 \contentsfinish 
