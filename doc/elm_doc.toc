@@ -1,0 +1,13 @@
+\ttl@change@i {\@ne }{chapter}{2em}{\vspace {.5\baselineskip }\xiaosan \song }{\prechaptername \CJKnumber {\thecontentslabel }\postchaptername \qquad }{}{\hspace {.5em}\titlerule *[10pt]{$\cdot $}\sihao \contentspage }\relax 
+\ttl@change@v {chapter}{}{}{}\relax 
+\ttl@change@i {\@ne }{section}{4.2em}{\vspace {.25\baselineskip }\sihao \song }{\thecontentslabel \quad }{}{\hspace {.5em}\titlerule *[10pt]{$\cdot $}\sihao \contentspage }\relax 
+\ttl@change@v {section}{}{}{}\relax 
+\contentsline {chapter}{\numberline {1}软件需求规格说明书}{1}{section*.3}%
+\contentsline {section}{\numberline {1.1}功能需求}{1}{section*.4}%
+\contentsline {subsection}{\numberline {1.1.1}管理人员需求}{1}{section*.5}%
+\contentsline {subsection}{\numberline {1.1.2}用户需求}{1}{section*.6}%
+\contentsline {subsubsection}{\numberline {1.1.2.1}普通用户需求}{1}{section*.7}%
+\contentsline {subsubsection}{\numberline {1.1.2.2}商家用户需求}{1}{section*.8}%
+\contentsline {subsubsection}{\numberline {1.1.2.3}骑手需求?}{2}{section*.9}%
+\contentsline {section}{\numberline {1.2}非功能需求}{2}{section*.10}%
+\contentsfinish 
