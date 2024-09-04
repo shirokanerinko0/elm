@@ -117,7 +117,7 @@
 							<i class="fa fa-star"></i>
 							<i class="fa fa-star"></i>
 							<i class="fa fa-star"></i>
-							<p>4.9 月售345单</p>
+							<p>4.9 月售1919810单</p>
 						</div>
 						<div class="business-info-star-right">
 							蜂鸟专送
@@ -252,7 +252,7 @@
 							<i class="fa fa-star"></i>
 							<i class="fa fa-star"></i>
 							<i class="fa fa-star"></i>
-							<p>4.9 月售345单</p>
+							<p>4.9 月售114514单</p>
 						</div>
 						<div class="business-info-star-right">
 							蜂鸟专送
@@ -363,7 +363,7 @@
 				}
 			}
 		},
-		destroyed() {
+		beforeUnmount() {
 			//当切换到其他组件时，就不需要document滚动条事件，所以将此事件去掉
 			document.onscroll = null;
 		},

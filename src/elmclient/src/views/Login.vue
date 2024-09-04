@@ -3,6 +3,7 @@
 
 		<!-- header部分 -->
 		<header>
+			<back-button></back-button>
 			<p>用户登陆</p>
 		</header>
 
@@ -40,7 +41,7 @@
 
 <script>
 	import Footer from '../components/Footer.vue';
-	
+	import BackButton from '../components/BackButton.vue';	
 	export default{
 		name:'Login',
 		data(){
@@ -79,11 +80,11 @@
 				});
 			},
 			register(){
-				this.$router.push({path:'register'});
+				this.$router.push({path:'/register'});
 			}
 		},
 		components:{
-			Footer
+			Footer,BackButton
 		}
 	}
 </script>

@@ -3,6 +3,7 @@
 
 		<!-- header部分 -->
 		<header>
+			<BackButton></BackButton>
 			<p>确认订单</p>
 		</header>
 
@@ -46,6 +47,7 @@
 </template>
 
 <script>
+	import BackButton from '../components/BackButton.vue';
 	export default{
 		name:'Orders',
 		data(){
@@ -94,6 +96,9 @@
 			sexFilter(value){
 				return value==1?'先生':'女士';
 			}
+		},
+		components:{
+			BackButton
 		},
 		methods:{
 			toUserAddress(){

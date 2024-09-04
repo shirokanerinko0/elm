@@ -3,6 +3,7 @@
 
 		<!-- header部分 -->
 		<header>
+			<BackButton></BackButton>
 			<p>在线支付</p>
 		</header>
 
@@ -49,7 +50,7 @@
 
 <script>
 	import Footer from '../components/Footer.vue';
-
+	import BackButton from '../components/BackButton.vue';
 	export default {
 		name: 'Payment',
 		data(){
@@ -90,7 +91,7 @@
 			}
 		},
 		components: {
-			Footer
+			Footer,BackButton
 		}
 	}
 </script>

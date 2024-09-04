@@ -3,6 +3,7 @@
 
 		<!-- header部分 -->
 		<header>
+			<back-button></back-button>
 			<p>用户注册</p>
 		</header>
 
@@ -62,6 +63,7 @@
 
 <script>
 	import Footer from '../components/Footer.vue';
+	import BackButton from '../components/BackButton.vue';	
 
 	export default {
 		name: 'Register',
@@ -125,7 +127,7 @@
 			}
 		},
 		components: {
-			Footer
+			Footer,BackButton
 		}
 	}
 </script>

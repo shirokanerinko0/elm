@@ -3,6 +3,7 @@
 
 		<!-- header部分 -->
 		<header>
+			<BackButton></BackButton>
 			<p>新增送货地址</p>
 		</header>
 
@@ -55,7 +56,7 @@
 
 <script>
 	import Footer from '../components/Footer.vue';
-
+	import BackButton from '../components/BackButton.vue';
 	export default {
 		name: 'AddUserAddress',
 		data() {
@@ -74,7 +75,7 @@
 			this.user = this.$getSessionStorage('user');
 		},
 		components: {
-			Footer
+			Footer,BackButton
 		},
 		methods: {
 			addUserAddress(){
