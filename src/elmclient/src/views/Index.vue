@@ -331,6 +331,7 @@
 		</ul>
 
 		<!-- 底部菜单部分 -->
+	    <div class="blank" style="height: 5vw"></div>
 		<Footer></Footer>
 	</div>
 </template>

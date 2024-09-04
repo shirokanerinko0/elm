@@ -21,9 +21,9 @@
 				</div>
 			</li>
 		</ul>
-
+		<div class="blank" style="height: 5vw"></div>
 		<!-- 底部菜单部分 -->
-		<Footer></Footer>
+		<Footer>  </Footer> 
 
 	</div>
 </template>

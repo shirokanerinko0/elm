@@ -65,6 +65,7 @@
 						</div>
 					</div>
 				</div>
+		<div class="blank" style="height: 5vw"></div>
 		<!--<Footer></Footer>-->
 		</div>
 </template>
