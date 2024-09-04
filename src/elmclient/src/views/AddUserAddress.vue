@@ -91,7 +91,7 @@
 					return;
 				}
 				this.deliveryAddress.userId = this.user.userId;
-				this.$axios.post('DeliveryAddressController/saveDeliveryAddress', this.$qs.stringify(
+				this.$axios.post('DeliveryAddress', this.$qs.stringify(
 					this.deliveryAddress
 				)).then(response => {
 					if(response.data>0){

@@ -62,7 +62,7 @@
 			this.deliveryaddress = this.$getLocalStorage(this.user.userId);
 			
 			//查询当前商家
-			this.$axios.post('BusinessController/getBusinessById',this.$qs.stringify({
+			this.$axios.post('Business',this.$qs.stringify({
 				businessId:this.businessId
 			})).then(response=>{
 				this.business = response.data;
@@ -71,7 +71,7 @@
 			});
 			
 			//查询当前用户在购物车中的当前商家食品列表
-			this.$axios.post('CartController/listCart',this.$qs.stringify({
+			this.$axios.post('Carts',this.$qs.stringify({
 				userId:this.user.userId,
 				businessId:this.businessId
 			})).then(response=>{
@@ -106,7 +106,7 @@
 				}
 				
 				//创建订单
-				this.$axios.post('OrdersController/createOrders',this.$qs.stringify({
+				this.$axios.post('Orders',this.$qs.stringify({
 					userId:this.user.userId,
 					businessId:this.businessId,
 					daId:this.deliveryaddress.daId,

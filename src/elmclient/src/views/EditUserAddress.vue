@@ -67,10 +67,8 @@
 		},
 		created() {
 			this.user = this.$getSessionStorage('user');
-			
-			this.$axios.post('DeliveryAddressController/getDeliveryAddressById', this.$qs.stringify({
-				daId:this.daId
-			})).then(response => {
+			const url = `DeliveryAddress?daId=${this.daId}`;
+			this.$axios.get(url).then(response => {
 				this.deliveryAddress = response.data;
 			}).catch(error => {
 				console.error(error);
@@ -94,7 +92,7 @@
 					return;
 				}
 
-				this.$axios.post('DeliveryAddressController/updateDeliveryAddress', this.$qs.stringify(
+				this.$axios.put('DeliveryAddress', this.$qs.stringify(
 					this.deliveryAddress
 				)).then(response => {
 					if (response.data > 0) {

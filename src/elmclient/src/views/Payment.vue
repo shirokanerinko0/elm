@@ -62,9 +62,11 @@
 			}
 		},
 		created() {
-			this.$axios.post('OrdersController/getOrdersById',this.$qs.stringify({
-				orderId:this.orderId
-			})).then(response=>{
+			  this.$axios.get('Orders', {
+			        params: {
+			            orderId: this.orderId
+			        }
+			    }).then(response=>{
 				this.orders = response.data;
 			}).catch(error=>{
 				console.error(error);

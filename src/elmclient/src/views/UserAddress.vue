@@ -59,7 +59,7 @@
 		methods:{
 			listDeliveryAddressByUserId(){
 				//查询送货地址
-				this.$axios.post('DeliveryAddressController/listDeliveryAddressByUserId',this.$qs.stringify({
+				this.$axios.post('DeliveryAddresses',this.$qs.stringify({
 					userId:this.user.userId
 				})).then(response=>{
 					this.deliveryAddressArr = response.data;
@@ -83,9 +83,11 @@
 					return;
 				}
 				
-				this.$axios.post('DeliveryAddressController/removeDeliveryAddress',this.$qs.stringify({
-					daId:daId
-				})).then(response=>{
+				this.$axios.delete('DeliveryAddress', {
+				    params: {
+				        daId: this.daId
+				    }
+				}).then(response=>{
 					if(response.data>0){
 						let deliveryAddress = this.$getLocalStorage(this.user.userId);
 						if(deliveryAddress!=null&&deliveryAddress.daId==daId){

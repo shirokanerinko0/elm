@@ -83,7 +83,7 @@
 			this.user = this.$getSessionStorage('user');
 			
 			//根据businessId查询商家信息
-			this.$axios.post('BusinessController/getBusinessById',this.$qs.stringify({
+			this.$axios.post('Business',this.$qs.stringify({
 				businessId:this.businessId
 			})).then(response=>{
 				this.business = response.data;
@@ -92,7 +92,7 @@
 			});
 			
 			//根据businessId查询所属食品信息
-			this.$axios.post('FoodController/listFoodByBusinessId',this.$qs.stringify({
+			this.$axios.post('Food',this.$qs.stringify({
 				businessId:this.businessId
 			})).then(response=>{
 				this.foodArr = response.data;
@@ -110,7 +110,7 @@
 		},
 		methods:{
 			listCart(){
-				this.$axios.post('CartController/listCart',this.$qs.stringify({
+				this.$axios.post('Carts',this.$qs.stringify({
 					businessId:this.businessId,
 					userId:this.user.userId
 				})).then(response=>{
@@ -160,7 +160,7 @@
 				}
 			},
 			savaCart(index){
-				this.$axios.post('CartController/saveCart',this.$qs.stringify({
+				this.$axios.post('Cart',this.$qs.stringify({
 					businessId:this.businessId,
 					userId:this.user.userId,
 					foodId:this.foodArr[index].foodId
@@ -177,7 +177,7 @@
 				});
 			},
 			updateCart(index,num){
-				this.$axios.post('CartController/updateCart',this.$qs.stringify({
+				this.$axios.put('Cart',this.$qs.stringify({
 					businessId:this.businessId,
 					userId:this.user.userId,
 					foodId:this.foodArr[index].foodId,
@@ -195,7 +195,7 @@
 				});
 			},
 			removeCart(index){
-				this.$axios.post('CartController/removeCart',this.$qs.stringify({
+				this.$axios.delete('Cart',this.$qs.stringify({
 					businessId:this.businessId,
 					userId:this.user.userId,
 					foodId:this.foodArr[index].foodId

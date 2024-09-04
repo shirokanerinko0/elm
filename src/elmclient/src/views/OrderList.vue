@@ -78,7 +78,7 @@
 		created() {
 			this.user = this.$getSessionStorage('user');
 			
-			this.$axios.post('OrdersController/listOrdersByUserId',this.$qs.stringify({
+			this.$axios.post('OrdersList',this.$qs.stringify({
 				userId:this.user.userId
 			})).then(response=>{
 				let result = response.data;
