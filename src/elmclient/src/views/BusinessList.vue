@@ -3,6 +3,7 @@
 
 		<!-- header部分 -->
 		<header>
+			<BackButton></BackButton>
 			<p>商家列表</p>
 		</header>
 
@@ -29,6 +30,7 @@
 
 <script>
 	import Footer from '../components/Footer.vue';
+	import BackButton from '../components/BackButton.vue';
 	
 	export default{
 		name:'BusinessList',
@@ -56,7 +58,7 @@
 			});
 		},
 		components:{
-			Footer
+			Footer,BackButton
 		},
 		methods:{
 			listCart(){

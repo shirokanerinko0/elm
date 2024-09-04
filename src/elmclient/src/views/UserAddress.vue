@@ -3,6 +3,7 @@
 
 		<!-- header部分 -->
 		<header>
+			<BackButton></BackButton>
 			<p>地址管理</p>
 		</header>
 
@@ -33,6 +34,7 @@
 
 <script>
 	import Footer from '../components/Footer.vue';
+	import BackButton from '../components/BackButton.vue';
 	
 	export default{
 		name:'UserAddress',
@@ -49,7 +51,7 @@
 			this.listDeliveryAddressByUserId();
 		},
 		components:{
-			Footer
+			Footer,BackButton
 		},
 		filters:{
 			sexFilter(value){

@@ -3,6 +3,7 @@
 
 		<!-- header部分 -->
 		<header>
+			<BackButton></BackButton>
 			<p>编辑送货地址</p>
 		</header>
 
@@ -54,6 +55,7 @@
 
 <script>
 	import Footer from '../components/Footer.vue';
+	import BackButton from '../components/BackButton.vue';
 
 	export default {
 		name: 'EditUserAddress',
@@ -67,6 +69,7 @@
 		},
 		created() {
 			this.user = this.$getSessionStorage('user');
+			
 			const url = `DeliveryAddress?daId=${this.daId}`;
 			this.$axios.get(url).then(response => {
 				this.deliveryAddress = response.data;
@@ -75,7 +78,7 @@
 			});
 		},
 		components: {
-			Footer
+			Footer,BackButton
 		},
 		methods: {
 			editUserAddress() {

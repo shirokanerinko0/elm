@@ -3,13 +3,15 @@
 
 		<!-- header部分 -->
 		<header>
+			<BackButton></BackButton>
 			<p>我的订单</p>
 		</header>
 
 		<!-- 订单列表部分 -->
 		<h3>未支付订单信息：</h3>
 		<ul class="order">
-			<li v-for="item in orderArr" v-if="item.orderState==0">
+			<li v-for="item in orderArr" >
+				<li v-if="item.orderState==0">
 				<div class="order-info">
 					<p>
 						{{item.business.businessName}}
@@ -30,12 +32,14 @@
 						<p>&#165;{{item.business.deliveryPrice}}</p>
 					</li>
 				</ul>
+				</li>
 			</li>
 		</ul>
 
 		<h3>已支付订单信息：</h3>
 		<ul class="order">
-			<li v-for="item in orderArr" v-if="item.orderState==1">
+			<li v-for="item in orderArr">
+			  <li v-if="item.orderState==1">
 				<div class="order-info">
 					<p>
 						{{item.business.businessName}}
@@ -55,6 +59,7 @@
 						<p>&#165;{{item.business.deliveryPrice}}</p>
 					</li>
 				</ul>
+			  </li>
 			</li>
 		</ul>
 
@@ -66,7 +71,7 @@
 
 <script>
 	import Footer from '../components/Footer.vue';
-	
+	import BackButton from '../components/BackButton.vue';		
 	export default{
 		name:'OrderList',
 		data(){
@@ -87,6 +92,7 @@
 				}
 				this.orderArr = result;
 			}).catch(error=>{
+				console.log("CNMD");
 				console.error(error);
 			});
 		},
@@ -96,7 +102,7 @@
 			}
 		},
 		components:{
-			Footer
+			Footer,BackButton
 		}
 	}
 </script>

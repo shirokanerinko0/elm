@@ -3,6 +3,7 @@
 				
 				<!-- header部分 -->
 				<header>
+					<back-button></back-button>
 					<p>商家信息</p>
 				</header>
 				
@@ -64,11 +65,14 @@
 						</div>
 					</div>
 				</div>
-				
-			</div>
+		<!--<Footer></Footer>-->
+		</div>
 </template>
 
 <script>
+	import Footer from '../components/Footer.vue';
+	import BackButton from '../components/BackButton.vue';	
+
 	export default{
 		name:'BusinessInfo',
 		data(){
@@ -83,7 +87,7 @@
 			this.user = this.$getSessionStorage('user');
 			
 			//根据businessId查询商家信息
-			this.$axios.post('Business',this.$qs.stringify({
+			this.$axios.post('Business',this.$qs.stringify({				
 				businessId:this.businessId
 			})).then(response=>{
 				this.business = response.data;
@@ -107,6 +111,9 @@
 			}).catch(error=>{
 				console.error(error);
 			});
+		},
+		components:{
+			Footer,BackButton
 		},
 		methods:{
 			listCart(){
@@ -437,7 +444,20 @@
 		justify-content: center;
 		align-items: center;
 	}
-	
+	/*返回按钮样式*/
+	.back-button {
+	    background-color: #007bff;
+	    color: white;
+	    border: none;
+		font-size: 4vw;
+		width: 20vw;
+		height: 10vw;
+	    padding: 2vw 4vw;
+	    cursor: pointer;
+	    border-radius: 5vw;
+		position: absolute; /* 将按钮从文档流中移除 */
+		left: 0vw; /* 将按钮放置在 header 的左边 */
+	}
 	/*不够起送费时的样式（只有背景色和鼠标样式的区别）*/
 	/*
 	.wrapper .cart .cart-right .cart-right-item{
