@@ -46,11 +46,11 @@
 				<div class="cart">
 					<div class="cart-left">
 						<div class="cart-left-icon" :style="totalQuantity==0?'background-color:#505051;':'background-color:#3190E8;'">
-							<i class="fa fa-shopping-cart"></i>
+							<i class="fa fa-shopping-cart" @click="detailetShow"></i>
 							<div class="cart-left-icon-quantity" v-show="totalQuantity!=0">{{totalQuantity}}</div>
 						</div>
 						<div class="cart-left-info">
-							<p>&#165;{{totalPrice}}</p>
+							<p>&#165;{{totalPrice.toFixed(2)}}</p>
 							<p>另需配送费{{business.deliveryPrice}}元</p>
 						</div>
 					</div>
@@ -81,12 +81,12 @@
 				businessId: this.$route.query.businessId,
 				business:{},
 				foodArr:[],
-				user:{}
+				user:{},
+				isShowDetailet:false,
 			}
 		},
 		created() {
 			this.user = this.$getSessionStorage('user');
-			
 			//根据businessId查询商家信息
 			this.$axios.post('Business',this.$qs.stringify({				
 				businessId:this.businessId
@@ -191,7 +191,7 @@
 					foodId:this.foodArr[index].foodId,
 					quantity:this.foodArr[index].quantity+num
 				})).then(response=>{
-					if(response.data==1){
+					if(response.data>0){
 						//此食品数量要更新为1或-1；
 						this.foodArr[index].quantity+=num;
 						this.foodArr.sort();
@@ -208,7 +208,7 @@
 					userId:this.user.userId,
 					foodId:this.foodArr[index].foodId
 				})).then(response=>{
-					if(response.data==1){
+					if(response.data==0){
 						//此食品数量要更新为0；视图的减号和数量要消失
 						this.foodArr[index].quantity=0;
 						this.foodArr.sort();
@@ -221,6 +221,9 @@
 			},
 			toOrder(){
 				this.$router.push({path:'/orders',query:{businessId:this.business.businessId}});
+			},
+			detailetShow(){
+				this.isShowDetailet = !this.isShowDetailet;
 			}
 		},
 		computed:{
@@ -228,7 +231,7 @@
 			totalPrice(){
 				let total = 0;
 				for(let item of this.foodArr){
-					total += item.foodPrice*item.quantity;
+					total +=item.foodPrice*item.quantity;
 				}
 				return total;
 			},

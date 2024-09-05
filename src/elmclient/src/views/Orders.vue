@@ -26,7 +26,7 @@
 					<img :src="item.food.foodImg">
 					<p>{{item.food.foodName}} x {{item.quantity}}</p>
 				</div>
-				<p>&#165;{{item.food.foodPrice*item.quantity}}</p>
+				<p>&#165;{{(item.food.foodPrice*item.quantity).toFixed(2)}}</p>
 			</li>
 		</ul>
 		<div class="order-deliveryfee">
@@ -37,7 +37,7 @@
 		<!-- 合计部分 -->
 		<div class="total">
 			<div class="total-left">
-				&#165;{{totalPrice}}
+				&#165;{{totalPrice.toFixed(2)}}
 			</div>
 			<div class="total-right" @click="toPayment">
 				去支付

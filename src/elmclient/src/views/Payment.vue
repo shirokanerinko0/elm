@@ -21,7 +21,7 @@
 		<ul class="order-detailet" v-show="isShowDetailet">
 			<li v-for="item in orders.list">
 				<p>{{item.food.foodName}} x {{item.quantity}}</p>
-				<p>&#165;{{item.food.foodPrice*item.quantity}}</p>
+				<p>&#165;{{(item.food.foodPrice*item.quantity).toFixed(2)}}</p>
 			</li>
 			<li>
 				<p>配送费</p>
@@ -40,7 +40,7 @@
 			</li>
 		</ul>
 		<div class="payment-button">
-			<button>确认支付</button>
+			<button style="font-size: 5vw" @click="aleadyPay">确认支付</button>
 		</div>
 
 		<!-- 底部菜单部分 -->
@@ -88,6 +88,8 @@
 		methods:{
 			detailetShow(){
 				this.isShowDetailet = !this.isShowDetailet;
+			},
+			aleadyPay(){
 			}
 		},
 		components: {
