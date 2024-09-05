@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 
 import com.neusoft.elmboot.mapper.UserMapper;
 import com.neusoft.elmboot.po.User;
+import com.neusoft.elmboot.po.UserDTO;
 import com.neusoft.elmboot.service.UserService;
 
 @Service
@@ -13,9 +14,20 @@ public class UserServiceImpl implements UserService{
 	@Autowired
 	private UserMapper userMapper;
 
+	//只返回必要用户信息
 	@Override
-	public User getUserByIdByPass(User user) {
-		return userMapper.getUserByIdByPass(user);
+	public UserDTO getUserByIdByPass(User user) {
+		  User foundUser = userMapper.getUserByIdByPass(user);
+	        if (foundUser != null) {
+	            return new UserDTO(
+	                foundUser.getUserId(),
+	                foundUser.getUserName(),
+	                foundUser.getUserSex(),
+	                foundUser.getUserImg(),
+	                foundUser.getDelTag()
+	            );
+	        }
+	        return null;
 	}
 	
 	@Override

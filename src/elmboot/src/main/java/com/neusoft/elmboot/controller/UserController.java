@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 
 import com.neusoft.elmboot.po.User;
+import com.neusoft.elmboot.po.UserDTO;
 import com.neusoft.elmboot.service.UserService;
 
 @RestController
@@ -17,8 +18,9 @@ public class UserController {
 	@Autowired
 	private UserService userService;
 
+	//只返回必要信息
 	@RequestMapping("/UserLogin")
-	public User getUserByIdByPass(User user) throws Exception{
+	public UserDTO getUserByIdByPass(User user) throws Exception{
 		return userService.getUserByIdByPass(user);
 	}
 	
@@ -31,4 +33,5 @@ public class UserController {
 	public int saveUser(User user) throws Exception{
 		return userService.saveUser(user);
 	}
+	
 }
