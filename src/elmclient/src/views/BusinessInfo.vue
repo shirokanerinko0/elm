@@ -41,7 +41,7 @@
 						</div>
 					</li>
 				</ul>
-				
+        <Cart v-show="isShowDetailet" :items="foodArr" />
 				<!-- 购物车部分 -->
 				<div class="cart">
 					<div class="cart-left">
@@ -65,7 +65,7 @@
 						</div>
 					</div>
 				</div>
-		<div class="blank" style="height: 5vw"></div>
+		<div class="blank" style="height: 17vw"></div>
 		<!--<Footer></Footer>-->
 		</div>
 </template>
@@ -73,7 +73,7 @@
 <script>
 	import Footer from '../components/Footer.vue';
 	import BackButton from '../components/BackButton.vue';	
-
+    import Cart from '../components/Cart.vue';	
 	export default{
 		name:'BusinessInfo',
 		data(){
@@ -114,7 +114,7 @@
 			});
 		},
 		components:{
-			Footer,BackButton
+			Footer,BackButton,Cart
 		},
 		methods:{
 			listCart(){
@@ -448,20 +448,7 @@
 		justify-content: center;
 		align-items: center;
 	}
-	/*返回按钮样式*/
-	.back-button {
-	    background-color: #007bff;
-	    color: white;
-	    border: none;
-		font-size: 4vw;
-		width: 20vw;
-		height: 10vw;
-	    padding: 2vw 4vw;
-	    cursor: pointer;
-	    border-radius: 5vw;
-		position: absolute; /* 将按钮从文档流中移除 */
-		left: 0vw; /* 将按钮放置在 header 的左边 */
-	}
+
 	/*不够起送费时的样式（只有背景色和鼠标样式的区别）*/
 	/*
 	.wrapper .cart .cart-right .cart-right-item{
