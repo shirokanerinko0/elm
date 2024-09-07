@@ -10,6 +10,7 @@ import OrderList from '../views/OrderList.vue'
 import AddUserAddress from '../views/AddUserAddress.vue'
 import EditUserAddress from '../views/EditUserAddress.vue'
 import Register from '../views/Register.vue'
+import MyUser from '../views/MyUser.vue'
 const routes = [{
 		path: '/',
 		name: 'Home',
@@ -58,6 +59,10 @@ const routes = [{
 		path: '/register',
 		name: 'Register',
 		component: Register
+	}, {
+		path: '/myUser',
+		name: 'MyUser',
+		component: MyUser
 	}
 
 ]

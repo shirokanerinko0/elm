@@ -12,7 +12,7 @@
 			<i class="fa fa-file-text-o"></i>
 			<p>订单</p>
 		</li>
-		<li>
+		<li @click="toMyUser">
 			<i class="fa fa-user-o"></i>
 			<p>我的</p>
 		</li>
@@ -28,6 +28,9 @@
 			},
 			toOrderList(){
 				this.$router.push({path:'/orderList'});
+			},
+			toMyUser(){
+				this.$router.push({path:'/myUser'});
 			}
 		}
 	}
