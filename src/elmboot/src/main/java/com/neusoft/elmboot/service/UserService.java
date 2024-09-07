@@ -5,7 +5,7 @@ import com.neusoft.elmboot.po.UserDTO;
 
 public interface UserService {
 
-	public UserDTO getUserByIdByPass(User user);
+	public UserDTO getUserByIdByPass(String userId, String password);
 	public int getUserById(String userId);
-	public int saveUser(User user);
+	public int saveUser(String userId, String password, String userName, Integer userSex);
 }

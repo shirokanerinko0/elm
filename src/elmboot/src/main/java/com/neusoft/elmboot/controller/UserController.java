@@ -20,8 +20,8 @@ public class UserController {
 
 	//只返回必要信息
 	@RequestMapping("/UserLogin")
-	public UserDTO getUserByIdByPass(User user) throws Exception{
-		return userService.getUserByIdByPass(user);
+	public UserDTO getUserByIdByPass(@RequestParam("userId") String userId, @RequestParam("password") String password) throws Exception{
+		return userService.getUserByIdByPass(userId, password);
 	}
 	
 	@GetMapping("/User")
@@ -30,8 +30,8 @@ public class UserController {
 	}
 	
 	@PostMapping("/User")
-	public int saveUser(User user) throws Exception{
-		return userService.saveUser(user);
+	public int saveUser(@RequestParam("userId") String userId, @RequestParam("password") String password, @RequestParam("userName") String userName, @RequestParam("userSex") Integer userSex) throws Exception{
+		return userService.saveUser(userId, password, userName, userSex);
 	}
 	
 }
