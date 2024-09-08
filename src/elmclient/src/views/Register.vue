@@ -64,7 +64,7 @@
 <script>
 	import Footer from '../components/Footer.vue';
 	import BackButton from '../components/BackButton.vue';	
-
+	import CryptoJS from 'crypto-js';
 	export default {
 		name: 'Register',
 		data() {
@@ -110,10 +110,15 @@
 					alert('用户名不能为空！');
 					return;
 				}
-
+				const encryptedPassword = CryptoJS.MD5(this.user.password).toString();
+				console.log("加密后的数据:",encryptedPassword);
+				const encryptedUser = {
+					...this.user,
+					password: encryptedPassword  // 使用加密后的密码
+				};
 				//注册请求
 				this.$axios.post('User', this.$qs.stringify(
-					this.user
+					encryptedUser
 				)).then(response => {
 					if(response.data>0){
 						alert('注册成功！');

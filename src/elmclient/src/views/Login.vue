@@ -42,6 +42,7 @@
 <script>
 	import Footer from '../components/Footer.vue';
 	import BackButton from '../components/BackButton.vue';	
+	import CryptoJS from 'crypto-js';
 	export default{
 		name:'Login',
 		data(){
@@ -60,11 +61,12 @@
 					alert('密码不能为空！');
 					return;
 				}
-				
+				const encryptedPassword =CryptoJS.MD5(this.password).toString();
+				console.log("加密后的数据:", encryptedPassword);
 				//登录请求
 				this.$axios.post('UserLogin',this.$qs.stringify({
 					userId:this.userId,
-					password:this.password
+					password:encryptedPassword
 				})).then(response=>{
 					let user = response.data;
 					if(user==null){
@@ -76,6 +78,7 @@
 						this.$router.go(-1);
 					}
 				}).catch(error=>{
+					alert('用户名或密码不正确！');
 					console.error(error);
 				});
 			},

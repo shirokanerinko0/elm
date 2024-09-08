@@ -6,6 +6,14 @@ public class UserDTO {
     private String userName;
     private Integer userSex;
     private String userImg;
+	public Integer getDelTag() {
+		return delTag;
+	}
+
+	public void setDelTag(Integer delTag) {
+		this.delTag = delTag;
+	}
+
 	private Integer delTag;
 
     public UserDTO(String userId, String userName, Integer userSex, String userImg,Integer delTag) {
