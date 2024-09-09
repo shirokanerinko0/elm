@@ -96,6 +96,7 @@
 				         orderId: this.orderId
 				        }
 				    }).then(response=>{
+					console.log(response.data);
 					alert("支付成功");
 					this.$router.go(-1);
 				}).catch(error=>{
