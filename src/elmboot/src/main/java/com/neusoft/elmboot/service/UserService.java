@@ -7,5 +7,5 @@ public interface UserService {
 
 	public UserDTO getUserByIdByPass(String userId, String password);
 	public int getUserById(String userId);
-	public int saveUser(String userId, String password, String userName, Integer userSex);
+	public int saveUser(String userId, String password, String userName, Integer userSex, Integer userType);
 }
