@@ -97,6 +97,7 @@
 				        }
 				    }).then(response=>{
 					alert("支付成功");
+					this.$router.go(-1);
 				}).catch(error=>{
 					console.error(error);
 				});

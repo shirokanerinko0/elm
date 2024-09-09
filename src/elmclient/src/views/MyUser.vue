@@ -135,4 +135,3 @@ export default {
 	  align-items: center;
 	}
 </style>
->>>>>>> ed2983ae79dc9cf6cb7e2b5da04d33bb40fa180f
