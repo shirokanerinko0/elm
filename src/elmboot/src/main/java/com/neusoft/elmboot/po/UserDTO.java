@@ -6,6 +6,16 @@ public class UserDTO {
     private String userName;
     private Integer userSex;
     private String userImg;
+	private Integer userType;
+    
+    public Integer getUserType() {
+		return userType;
+	}
+
+	public void setUserType(Integer userType) {
+		this.userType = userType;
+	}
+
 	public Integer getDelTag() {
 		return delTag;
 	}
@@ -16,12 +26,13 @@ public class UserDTO {
 
 	private Integer delTag;
 
-    public UserDTO(String userId, String userName, Integer userSex, String userImg,Integer delTag) {
+    public UserDTO(String userId, String userName, Integer userSex, String userImg,Integer delTag,Integer userType) {
         this.userId = userId;
         this.userName = userName;
         this.userSex = userSex;
         this.userImg = userImg;
         this.delTag = delTag;
+        this.userType=userType;
     }
 
     public String getUserId() {

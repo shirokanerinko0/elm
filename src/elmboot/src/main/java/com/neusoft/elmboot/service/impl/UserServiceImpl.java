@@ -22,7 +22,7 @@ public class UserServiceImpl implements UserService {
 		User foundUser = userMapper.getUserByIdByPass(userId);
 		if (foundUser != null && PasswordEncoderUtil.matches(password, foundUser.getPassword()) == true) {
 			return new UserDTO(foundUser.getUserId(), foundUser.getUserName(), foundUser.getUserSex(),
-					foundUser.getUserImg(), foundUser.getDelTag());
+					foundUser.getUserImg(), foundUser.getDelTag(),foundUser.getUserType());
 		}
 		return null;
 	}
@@ -33,8 +33,8 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public int saveUser(String userId, String password, String userName, Integer userSex) {
+	public int saveUser(String userId, String password, String userName, Integer userSex, Integer userType) {
 		String encodedPassword = PasswordEncoderUtil.encode(password);
-		return userMapper.saveUser(userId, encodedPassword, userName, userSex);
+		return userMapper.saveUser(userId, encodedPassword, userName, userSex, userType);
 	}
 }

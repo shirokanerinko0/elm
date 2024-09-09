@@ -38,6 +38,9 @@ export default {
 		this.user.userImg = localStorage.getItem('userAvatar') ||this.user.userImg||'';
 		console.log(this.user.userImg);
 	},
+	mounted() {
+	  window.scrollTo(0, 0);  // 滚动到顶部
+	},
 	methods: {
 		logout() {
 			sessionStorage.removeItem('user');
@@ -53,13 +56,14 @@ export default {
 			const reader = new FileReader();
 			reader.onloadend = () => {
 				const base64Image = reader.result.split(',')[1];
+				this.user.userImg="data:image/png;base64,"+base64Image;
 				this.uploadAvatar(base64Image);
 			};
 			reader.readAsDataURL(file);
 		},
 		uploadAvatar(base64Image) {
-			this.$axios.post('/UserImgUpdate', { 
-			userImg: base64Image,
+			this.$axios.post('/UserImgUpdate', null,{ 
+			userImg:"data:image/png;base64,"+base64Image,
 			userId:this.user.userId
 				}).then(response => {
 					this.user.userImg = response.data.userImg;
@@ -135,4 +139,3 @@ export default {
 	  align-items: center;
 	}
 </style>
->>>>>>> ed2983ae79dc9cf6cb7e2b5da04d33bb40fa180f
