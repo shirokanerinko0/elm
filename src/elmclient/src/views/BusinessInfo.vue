@@ -177,6 +177,8 @@
 						//此食品数量要更新为1；
 						this.foodArr[index].quantity=1;
 						this.foodArr.sort();
+						console.log(this.foodArr);
+						console.log(response.data);
 					}else{
 						alert('向购物车中添加食品失败！');
 					}
@@ -191,10 +193,11 @@
 					foodId:this.foodArr[index].foodId,
 					quantity:this.foodArr[index].quantity+num
 				})).then(response=>{
-					if(response.data>0){
+					if(response.data==1){
 						//此食品数量要更新为1或-1；
 						this.foodArr[index].quantity+=num;
 						this.foodArr.sort();
+						console.log(response.data);
 					}else{
 						alert('向购物车中更新食品失败！');
 					}
@@ -203,15 +206,22 @@
 				});
 			},
 			removeCart(index){
-				this.$axios.delete('Cart',this.$qs.stringify({
-					businessId:this.businessId,
-					userId:this.user.userId,
-					foodId:this.foodArr[index].foodId
-				})).then(response=>{
-					if(response.data==0){
+				this.$axios.delete('Cart',{
+					params: {
+					  businessId: this.businessId,
+					  userId: this.user.userId,
+					  foodId: this.foodArr[index].foodId
+					}
+				}).then(response=>{
+					console.log(this.businessId);
+					console.log(this.user.userId);
+					console.log(this.foodArr[index].foodId);
+					if(response.data==1){
 						//此食品数量要更新为0；视图的减号和数量要消失
 						this.foodArr[index].quantity=0;
 						this.foodArr.sort();
+						console.log(this.foodArr);
+						console.log(response.data);
 					}else{
 						alert('从购物车中删除食品失败！');
 					}

@@ -36,7 +36,6 @@ export default {
 	created() {
 		this.user = this.$getSessionStorage('user');
 		this.user.userImg = localStorage.getItem('userAvatar') ||this.user.userImg||'';
-		console.log(this.user.userImg);
 	},
 	mounted() {
 	  window.scrollTo(0, 0);  // 滚动到顶部
@@ -62,7 +61,7 @@ export default {
 			reader.readAsDataURL(file);
 		},
 		uploadAvatar(base64Image) {
-			this.$axios.post('/UserImgUpdate', null,{ 
+			this.$axios.post('/UserImgUpdate',{ 
 			userImg:"data:image/png;base64,"+base64Image,
 			userId:this.user.userId
 				}).then(response => {
