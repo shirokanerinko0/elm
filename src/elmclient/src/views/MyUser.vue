@@ -12,6 +12,7 @@
 				<button @click="triggerFileInput" style="font-size: 5vw;">上传头像</button>
 			</div>
 			<h3>用户名： {{ this.user.userId }}</h3>
+			<button class="addButton" @click="toAddress">管理配送地址</button>
 			<button class="layoutButton" @click="logout">退出登录</button>
 		</div>
 
@@ -67,7 +68,11 @@ export default {
 				.catch(error => {
 					console.error('上传失败:', error);
 				});
-		}
+		},
+			toAddress() {
+    		// 使用 Vue Router 导航到新的页面
+    		this.$router.push('/UserAddress'); 
+            }
 	},
 	components: {
 		Footer, BackButton
@@ -119,4 +124,15 @@ export default {
 	height: 20vw;
 	border-radius: 50%;
 }
+/****************** 管理地址按钮 ******************/
+.addButton {
+	  font-size: 4vw;
+	  position: absolute;
+	  left: 50%;          /* 将按钮水平居中 */
+	  transform: translateX(-50%);  /* 精确居中 */
+	  display: flex;       /* 使按钮内的内容居中 */
+	  justify-content: center;
+	  align-items: center;
+	}
 </style>
+>>>>>>> ed2983ae79dc9cf6cb7e2b5da04d33bb40fa180f
