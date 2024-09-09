@@ -19,8 +19,8 @@
 				<!-- 搜索框部分中间的白框 -->
 				<div class="search-box">
 					<i class="fa fa-search"></i>
-					<input style="height: 6vw;width: 50vw;"  type="text" v-model="keyWord" placeholder="搜索饿了么商家">
-					<input style="height: 6vw;width: 14vw;"  type="button" @click="searchBusiness(keyWord)" value="搜索">
+					<input style="height: 6vw;width: 50vw;font-size: 4vw;"  type="text" v-model="keyWord" placeholder="搜索饿了么商家">
+					<input style="height: 7vw;width: 14vw;font-size: 4vw;"  type="button" @click="searchBusiness(keyWord)" value="搜索">
 				</div>
 			</div>
 		</div>
@@ -379,6 +379,10 @@
 			},
 			searchBusiness(keyWord){
 				console.log('搜索关键词:', keyWord);
+				if(keyWord==null||keyWord.trim() === ''){
+					alert("关键词不能为空！");
+					return;
+				}
 				this.$router.push({path:'/search',query:{keyWord:keyWord}});
 			}
 		}
