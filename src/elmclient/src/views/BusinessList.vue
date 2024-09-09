@@ -60,6 +60,9 @@
 		components:{
 			Footer,BackButton
 		},
+		mounted() {
+		  window.scrollTo(0, 0);  // 滚动到顶部
+		},
 		methods:{
 			listCart(){
 				this.$axios.post('Carts',this.$qs.stringify({

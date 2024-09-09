@@ -62,6 +62,9 @@
 			});
 			
 		},
+		mounted() {
+		  window.scrollTo(0, 0);  // 滚动到顶部
+		},
 		components:{
 			Footer,BackButton
 		},

@@ -100,6 +100,9 @@
 		components:{
 			BackButton
 		},
+		mounted() {
+		  window.scrollTo(0, 0);  // 滚动到顶部
+		},
 		methods:{
 			toUserAddress(){
 				this.$router.push({path:'/userAddress',query:{businessId:this.businessId}});
