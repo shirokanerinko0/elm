@@ -7,31 +7,32 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RequestParam;
 
-
 import com.neusoft.elmboot.po.User;
 import com.neusoft.elmboot.po.UserDTO;
 import com.neusoft.elmboot.service.UserService;
 
 @RestController
 public class UserController {
-	
+
 	@Autowired
 	private UserService userService;
 
-	//只返回必要信息
+	// 只返回必要信息
 	@RequestMapping("/UserLogin")
-	public UserDTO getUserByIdByPass(@RequestParam("userId") String userId, @RequestParam("password") String password) throws Exception{
+	public UserDTO getUserByIdByPass(@RequestParam("userId") String userId, @RequestParam("password") String password)
+			throws Exception {
 		return userService.getUserByIdByPass(userId, password);
 	}
-	
+
 	@GetMapping("/User")
-	public int getUserById(@RequestParam String userId) throws Exception{
+	public int getUserById(@RequestParam String userId) throws Exception {
 		return userService.getUserById(userId);
 	}
-	
+
 	@PostMapping("/User")
-	public int saveUser(@RequestParam("userId") String userId, @RequestParam("password") String password, @RequestParam("userName") String userName, @RequestParam("userSex") Integer userSex) throws Exception{
+	public int saveUser(@RequestParam("userId") String userId, @RequestParam("password") String password,
+			@RequestParam("userName") String userName, @RequestParam("userSex") Integer userSex) throws Exception {
 		return userService.saveUser(userId, password, userName, userSex);
 	}
-	
+
 }
