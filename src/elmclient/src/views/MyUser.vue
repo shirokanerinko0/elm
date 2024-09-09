@@ -58,7 +58,7 @@ export default {
 		},
 		uploadAvatar(base64Image) {
 			this.$axios.post('/UserImgUpdate', { 
-			userImg: base64Image,
+			userImg:base64Image,
 			userId:this.user.userId
 				}).then(response => {
 					this.user.userImg = response.data.userImg;
