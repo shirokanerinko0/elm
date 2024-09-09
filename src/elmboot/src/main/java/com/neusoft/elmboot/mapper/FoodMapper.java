@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import com.neusoft.elmboot.po.Food;
 
@@ -15,4 +16,7 @@ public interface FoodMapper {
 	
 	@Select("select * from food where foodId=#{foodId}")
 	public Food getFoodById(Integer foodId);
+	
+	@Update("update food set quantity = quantity - #{odQuantity} where foodId = #{foodId}")
+	public void orderFood(Integer foodId, Integer odQuantity);
 }

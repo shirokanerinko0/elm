@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.neusoft.elmboot.po.Business;
@@ -26,7 +27,7 @@ public class BusinessController {
 	}
 	
 	@RequestMapping("/BusinessesByKeyWord")
-	public List<Business> listBusinessByKeyWord(String keyWord) throws Exception{
+	public List<Business> listBusinessByKeyWord(@RequestParam String keyWord) throws Exception{
 		return businessService.listBusinessByKeyWord(keyWord);
 	}
 }
