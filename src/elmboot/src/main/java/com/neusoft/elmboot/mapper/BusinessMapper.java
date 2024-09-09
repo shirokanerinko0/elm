@@ -15,4 +15,7 @@ public interface BusinessMapper {
 	
 	@Select("select * from business where businessId=#{businessId}")
 	public Business getBusinessById(Integer businessId);
+	
+	@Select("select * from business where businessName like CONCAT('%', #{keyWord}, '%')")
+	public List<Business> listBusinessByKeyWord(String keyWord);
 }

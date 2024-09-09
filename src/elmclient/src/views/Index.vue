@@ -18,7 +18,9 @@
 			<div class="search-fixed-top" ref="fixedBox">
 				<!-- 搜索框部分中间的白框 -->
 				<div class="search-box">
-					<i class="fa fa-search"></i>搜索饿了么商家、商品名称
+					<i class="fa fa-search"></i>
+					<input style="height: 6vw;width: 50vw;"  type="text" v-model="keyWord" placeholder="搜索饿了么商家">
+					<input style="height: 6vw;width: 14vw;"  type="button" @click="searchBusiness(keyWord)" value="搜索">
 				</div>
 			</div>
 		</div>
@@ -374,6 +376,10 @@
 		methods:{
 			toBusinessList(orderTypeId){
 				this.$router.push({path:'/businessList',query:{orderTypeId:orderTypeId}});
+			},
+			searchBusiness(keyWord){
+				console.log('搜索关键词:', keyWord);
+				this.$router.push({path:'/search',query:{keyWord:keyWord}});
 			}
 		}
 	}

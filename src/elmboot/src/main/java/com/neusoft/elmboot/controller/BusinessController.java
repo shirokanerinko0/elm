@@ -24,5 +24,9 @@ public class BusinessController {
 	public Business getBusinessById(Business business) throws Exception{
 		return businessService.getBusinessById(business.getBusinessId());
 	}
-
+	
+	@RequestMapping("/BusinessesByKeyWord")
+	public List<Business> listBusinessByKeyWord(String keyWord) throws Exception{
+		return businessService.listBusinessByKeyWord(keyWord);
+	}
 }

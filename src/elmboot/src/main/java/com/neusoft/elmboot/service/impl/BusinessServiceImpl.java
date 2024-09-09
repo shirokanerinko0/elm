@@ -24,4 +24,10 @@ public class BusinessServiceImpl implements BusinessService{
 	public Business getBusinessById(Integer businessId) {
 		return businessMapper.getBusinessById(businessId);
 	}
+	
+	@Override
+	public List<Business> listBusinessByKeyWord(String keyWord) {
+		System.out.println(keyWord);
+		return businessMapper.listBusinessByKeyWord(keyWord);
+	}
 }

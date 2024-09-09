@@ -11,6 +11,7 @@ import AddUserAddress from '../views/AddUserAddress.vue'
 import EditUserAddress from '../views/EditUserAddress.vue'
 import Register from '../views/Register.vue'
 import MyUser from '../views/MyUser.vue'
+import Search from '../views/Search.vue'
 const routes = [{
 		path: '/',
 		name: 'Home',
@@ -63,6 +64,10 @@ const routes = [{
 		path: '/myUser',
 		name: 'MyUser',
 		component: MyUser
+	}, {
+		path: '/search',
+		name: 'Search',
+		component: Search
 	}
 
 ]
