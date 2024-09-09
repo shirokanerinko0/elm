@@ -4,7 +4,7 @@
 		<!-- header部分 -->
 		<header>
 			<BackButton></BackButton>
-			<p>搜索商家</p>
+			<p>搜索商家 : {{this.keyWord}}</p>
 		</header>
 
 		<!-- 商家列表部分 -->
@@ -20,6 +20,7 @@
 					<p>{{item.businessExplain}}</p>
 				</div>
 			</li>
+			<li v-if="businessArr.length==0" style="font-size: 5vw;" >没有符合条件的商家</li>
 		</ul>
 		<div class="blank" style="height: 5vw"></div>
 		<!-- 底部菜单部分 -->
