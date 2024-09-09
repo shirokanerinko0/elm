@@ -5,7 +5,10 @@
 			<BackButton></BackButton>
 			<p>我的信息</p>
 		</header>
+		<h3>我的头像</h3>
 		<h3>用户名： {{this.user.userId}}</h3>
+		<button class="addButton" @click="toAddress">管理配送地址</button>
+			
 	<button class="layoutButton" @click="logout">退出登录</button>
 	<!-- 底部菜单部分 -->
 	<Footer></Footer>
@@ -20,22 +23,29 @@
 		data(){
 			return {
 				user:{},
-				userId:{}
+				userId:{},
+				
 			}
 		},
 		created() {
 			this.user = this.$getSessionStorage('user');
+			
 		},
 		methods:{
 			logout(){
 				sessionStorage.removeItem('user');
 				this.$router.go(-1);
-			}
+			},
+			toAddress() {
+    		// 使用 Vue Router 导航到新的页面
+    		this.$router.push('/UserAddress'); 
+            }
 		},
 		components:{
 			Footer,BackButton
 		}
-	}	
+	}
+
 </script>
 
 <style scoped>
@@ -78,5 +88,16 @@
 		font-size: 4vw;
 		font-weight: 300;
 		color: black;
+	}
+
+	/****************** 管理地址按钮 ******************/
+	.addButton {
+	  font-size: 4vw;
+	  position: absolute;
+	  left: 50%;          /* 将按钮水平居中 */
+	  transform: translateX(-50%);  /* 精确居中 */
+	  display: flex;       /* 使按钮内的内容居中 */
+	  justify-content: center;
+	  align-items: center;
 	}
 </style>
