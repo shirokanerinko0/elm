@@ -15,6 +15,7 @@ import Search from '../views/Search.vue'
 import MyBusiness from '../views/MyBusiness.vue'
 import BusinessFrom from '../views/BusinessFrom.vue'
 import FoodInfo from '../views/FoodInfo.vue'
+import FoodList from '../views/FoodList.vue'
 const routes = [{
 		path: '/',
 		name: 'Home',
@@ -83,6 +84,10 @@ const routes = [{
 		path:'/foodInfo',
 		name:'FoodInfo',
 		component: FoodInfo
+	},{
+		path:'/foodList',
+		name:'FoodList',
+		component: FoodList
 	}
 
 ]
