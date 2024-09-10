@@ -13,6 +13,7 @@ import Register from '../views/Register.vue'
 import MyUser from '../views/MyUser.vue'
 import Search from '../views/Search.vue'
 import MyBusiness from '@/views/MyBusiness.vue'
+import BusinessFrom from '../views/BusinessFrom.vue'
 const routes = [{
 		path: '/',
 		name: 'Home',
@@ -73,6 +74,10 @@ const routes = [{
 		path:'/MyBusiness',
 		name:'MyBusiness',
 		component: MyBusiness
+	},{
+		path:'/businessFrom',
+		name:'BusinessFrom',
+		component: BusinessFrom
 	}
 
 ]

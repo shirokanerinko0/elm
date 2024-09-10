@@ -1,2 +1,2 @@
-mvn package
-java -jar C:\Elmproject\gittest\elm\src\elmboot\target\elmboot-0.0.1-SNAPSHOT.jar
+copy C:\Elmproject\gittest\elm\src\elmboot\application.properties  C:\Elmproject\gittest\elm\src\elmboot\src\main\resources\
+mvn package 

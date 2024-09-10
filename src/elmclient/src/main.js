@@ -41,6 +41,10 @@ router.beforeEach((to, from) => {
     return '/login';
     }
   }
+  if(to.path=='/businessFrom'&&user.userType==null){
+	  return 'MyBusiness';
+  }
+  
   // 继续导航
   return true;
 });

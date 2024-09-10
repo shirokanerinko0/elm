@@ -62,7 +62,7 @@ export default {
             console.log("加密后的数据:", encryptedPassword);
             //登录请求
             this.$axios.post('TODO', this.$qs.stringify({
-                userId: user.userId,
+                userId: this.user.userId,
                 password: encryptedPassword,
                 businessName: this.businessName
             })).then(response => {
