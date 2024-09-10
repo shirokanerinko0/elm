@@ -58,7 +58,10 @@ export default {
 		handleFileChange(event) {
 			const file = event.target.files[0];
 			if (!file) return;
-
+			if (file.size > 2*1024*1024) {
+			    alert(`图片大小超过2MB，请选择更小的图片`);
+			    return;
+			}
 			const reader = new FileReader();
 			reader.onloadend = () => {
 				const base64Image = reader.result.split(',')[1];
@@ -68,15 +71,13 @@ export default {
 			reader.readAsDataURL(file);
 		},
 		uploadAvatar(base64Image) {
-			this.$axios.post('UserImg',null, {
-				params:{
-					userImg:"data:image/png;base64,"+base64Image,
-					userId:this.user.userId
-				} 
+			this.$axios.post('/UserImg',{
+			userImg:"data:image/png;base64,"+base64Image,
+			userId:this.user.userId,
 				}).then(response => {
-					this.user.userImg = response.data.userImg;
+					this.user.userImg = "data:image/png;base64,"+base64Image;
 					this.$setSessionStorage('user', this.user);
-					localStorage.setItem('userAvatar', response.data.userImg);
+					localStorage.setItem('userAvatar', "data:image/png;base64,"+base64Image);
 				})
 				.catch(error => {
 					console.error('上传失败:', error);

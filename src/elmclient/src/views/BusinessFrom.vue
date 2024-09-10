@@ -11,7 +11,18 @@
 				<input type="file" @change="handleFileChange" ref="fileInput" style="display: none;" />
 				<button @click="triggerFileInput" style="font-size: 5vw;">上传头像</button>
 			</div>
-
+商家类型<select id="tShirtSize" v-model="orderTypeId" style="font-size: 4vw; width: 50vw;height: 6vw;" def>
+                        <option value="1">美食</option>
+                        <option value="2">早餐</option>
+						<option value="3">跑腿代购</option>
+						<option value="4">披萨汉堡</option>
+						<option value="5">甜品饮料</option>
+						<option value="6">速食简餐</option>
+						<option value="7">地方小吃</option>
+						<option value="8">米粉面馆</option>
+						<option value="9">包子粥铺</option>
+						<option value="10">炸鸡炸串</option>
+                </select>
 		</div>
 		<Footer></Footer>
 	</div>
@@ -29,12 +40,14 @@ export default {
 			user: {},
 			defaultAvatar: defaultAvatarPath,
 			business:{},
-			foodArr:[]
+			foodArr:[],
+			orderTypeId:1,
 		};
 	},
 	created() {
 		this.user = this.$getSessionStorage('user');
 		this.business = this.$getSessionStorage('business');
+		this.orderTypeId = this.business.orderTypeId;
 		console.log(this.business);
 	},
 	mounted() {
@@ -66,7 +79,7 @@ export default {
 				})
 				.catch(error => {
 					console.error('上传失败:', error);
-				});
+			});
 		},
 		
 	},
