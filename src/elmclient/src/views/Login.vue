@@ -53,6 +53,9 @@
 				businessId:null
 			}
 		},
+		mounted() {
+  		window.scrollTo(0, 0);
+		},
 		methods:{
 			login(){
 				if(this.userId==''){
@@ -109,6 +112,7 @@
 				this.$router.push({path:'/register'});
 			}
 		},
+		
 		components:{
 			Footer,BackButton
 		}

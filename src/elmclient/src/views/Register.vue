@@ -87,6 +87,9 @@
 				confirmPassword:''
 			}
 		},
+		mounted() {
+  		window.scrollTo(0, 0);
+		},
 		methods: {
 			checkUserId(){
 				this.$axios.get('User', {

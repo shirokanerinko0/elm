@@ -42,7 +42,8 @@ export default {
             user:{},
             businessId: '',
             businessName:'',
-            confirmpassword: ''
+            confirmpassword: '',
+            business:{}
         }
     },
     created(){
@@ -83,11 +84,11 @@ export default {
 						this.$axios.post('Business',{
 							businessId:businessId
 						}).then(response=>{
-							let business = response.data;
-							if(business==null){
+							this.business = response.data;
+							if(this.business==null){
 								alert('没有这个商家：'+businessId);
 							}else{
-								this.$setSessionStorage('business',business);
+								this.$setSessionStorage('business',this.business);
 							}
 						}).catch(error=>{
 							console.error(error);

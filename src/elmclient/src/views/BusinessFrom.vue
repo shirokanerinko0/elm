@@ -47,6 +47,8 @@ export default {
 	created() {
 		this.user = this.$getSessionStorage('user');
 		this.business = this.$getSessionStorage('business');
+		console.log('Business:', this.business);
+        console.log('Type of business:', typeof this.business);
 		this.orderTypeId = this.business.orderTypeId;
 		console.log(this.business);
 	},
