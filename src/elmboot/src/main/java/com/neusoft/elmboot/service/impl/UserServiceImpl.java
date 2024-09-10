@@ -36,4 +36,9 @@ public class UserServiceImpl implements UserService {
 		String encodedPassword = PasswordEncoderUtil.encode(password);
 		return userMapper.saveUser(userId, encodedPassword, userName, userSex);
 	}
+	
+	@Override
+	public int updateUserImg(String userImg, String userId) {
+		return userMapper.updateUserImg(userImg, userId);
+	}
 }

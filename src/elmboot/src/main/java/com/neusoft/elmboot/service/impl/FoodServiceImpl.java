@@ -19,4 +19,19 @@ public class FoodServiceImpl implements FoodService{
 	public List<Food> listFoodByBusinessId(Integer businessId) {
 		return foodMapper.listFoodByBusinessId(businessId);
 	}
+	
+	@Override
+	public int saveFood(String foodName, String foodExplain, String foodImg,Double foodPrice, Integer businessId, Integer quantity) {
+		return foodMapper.saveFood(foodName, foodExplain, foodImg, foodPrice, businessId, quantity);
+	}
+	
+	@Override
+	public int removeFood(Integer foodId) {
+		return foodMapper.removeFood(foodId);
+	}
+	
+	@Override
+	public int updateFood(Food food) {
+		return foodMapper.updateFood(food);
+	}
 }

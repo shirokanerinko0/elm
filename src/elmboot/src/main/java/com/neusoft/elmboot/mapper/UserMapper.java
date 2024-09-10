@@ -21,4 +21,7 @@ public interface UserMapper {
 	
 	@Update("update user set userType = #{businessId} where userId = #{userId}")
 	public void updateUserTypeByUserId(String userId, Integer businessId);
+	
+	@Update("update user set userImg = #{userImg} where userId = #{userId}")
+	public int updateUserImg(String userImg, String userId);
 }
