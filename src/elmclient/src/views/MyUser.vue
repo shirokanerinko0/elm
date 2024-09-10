@@ -68,9 +68,11 @@ export default {
 			reader.readAsDataURL(file);
 		},
 		uploadAvatar(base64Image) {
-			this.$axios.post('/UserImgUpdate',{ 
-			userImg:"data:image/png;base64,"+base64Image,
-			userId:this.user.userId
+			this.$axios.post('UserImg',null, {
+				params:{
+					userImg:"data:image/png;base64,"+base64Image,
+					userId:this.user.userId
+				} 
 				}).then(response => {
 					this.user.userImg = response.data.userImg;
 					this.$setSessionStorage('user', this.user);

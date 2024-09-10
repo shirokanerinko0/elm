@@ -36,7 +36,7 @@ public class UserController {
 		return userService.saveUser(userId, password, userName, userSex);
 	}
 	
-	@PostMapping("/userImg")
+	@PostMapping("/UserImg")
 	public int updateUserImg(@RequestParam String userImg, @RequestParam String userId) throws Exception{
 		return userService.updateUserImg(userImg, userId);
 	}
