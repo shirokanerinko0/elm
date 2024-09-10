@@ -34,7 +34,8 @@ export default {
 	},
 	created() {
 		this.user = this.$getSessionStorage('user');
-		this.business=this.$getSessionStorage('business');
+		this.business = this.$getSessionStorage('business');
+		console.log(this.business);
 	},
 	mounted() {
 	  window.scrollTo(0, 0);  // 滚动到顶部
@@ -50,13 +51,13 @@ export default {
 			const reader = new FileReader();
 			reader.onloadend = () => {
 				const base64Image = reader.result.split(',')[1];
-				this.user.userImg="data:image/png;base64,"+base64Image;
+				this.business.businessImg="data:image/png;base64,"+base64Image;
 				this.uploadAvatar(base64Image);
 			};
 			reader.readAsDataURL(file);
 		},
 		uploadAvatar(base64Image) {
-			this.$axios.post('/BusinessImgUpdate',{ 
+			this.$axios.post('/BusinessImgUpdate',{
 			businessImg:"data:image/png;base64,"+base64Image,
 			businessId:this.business.businessId
 				}).then(response => {

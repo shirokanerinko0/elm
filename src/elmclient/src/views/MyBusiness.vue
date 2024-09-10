@@ -2,7 +2,7 @@
     <div class="wrapper">
         <header>
             <back-button></back-button>
-            <p>我要开店！</p>
+            <p>商家注册</p>
         </header>
         <ul class="form-box">
             <li>
@@ -61,19 +61,38 @@ export default {
             const encryptedPassword = CryptoJS.MD5(this.confirmpassword).toString();
             console.log("加密后的数据:", encryptedPassword);
             //登录请求
-            this.$axios.post('TODO', this.$qs.stringify({
+			console.log(this.user.userId);
+			console.log(encryptedPassword);
+			console.log(this.businessName);
+            this.$axios.post('BusinessRegistration', null,
+			{
+				params:{
                 userId: this.user.userId,
                 password: encryptedPassword,
-                businessName: this.businessName
-            })).then(response => {
-                let user = response.data;
-                if (user == null) {
-                    alert('密码不正确！');
-                } 
-                if(user.userType==NULL){
-                    alert('注册失败了！');
-                }else {
+                businessName: this.businessName,
+				}
+            }).then(response => {
+                let businessId = response.data;
+				console.log(businessId);
+                if(businessId==null){
+					alert('失败');
+				}
+				else {
                     alert('恭喜成为商家！');
+					if(businessId!=null){
+						this.$axios.post('Business',{
+							businessId:businessId
+						}).then(response=>{
+							let business = response.data;
+							if(business==null){
+								alert('没有这个商家：'+businessId);
+							}else{
+								this.$setSessionStorage('business',business);
+							}
+						}).catch(error=>{
+							console.error(error);
+						});
+					}
                     this.$router.go(-1);
                 }
             }).catch(error => {
