@@ -4,17 +4,23 @@
 			<BackButton></BackButton>
 			<p>我的信息</p>
 		</header>
+		
 
 		<div class="user-info">
+			<h3 >用户名： {{ this.user.userName }}</h3>
 			<div class="avatar">
 				<img :src="this.user.userImg || defaultAvatar" alt="用户头像" />
 				<input type="file" @change="handleFileChange" ref="fileInput" style="display: none;" />
 				<button @click="triggerFileInput" style="font-size: 5vw;">上传头像</button>
 			</div>
-			<h3>用户名： {{ this.user.userId }}</h3>
-			<button class="addButton" @click="toAddress">管理配送地址</button>
 			<button class="layoutButton" @click="logout">退出登录</button>
+
+			<div>
+				<button class="addButton" @click="toAddress">管理配送地址</button>	
+			</div>
+			<div><button class="addButton2" @click="becomeBussiness">我要开店！</button></div>
 		</div>
+		
 
 		<Footer></Footer>
 	</div>
@@ -67,15 +73,20 @@ export default {
 				}).then(response => {
 					this.user.userImg = response.data.userImg;
 					this.$setSessionStorage('user', this.user);
+					localStorage.setItem('userAvatar', response.data.userImg);
 				})
 				.catch(error => {
 					console.error('上传失败:', error);
 				});
 		},
-			toAddress() {
+		toAddress() {
     		// 使用 Vue Router 导航到新的页面
     		this.$router.push('/UserAddress'); 
-            }
+        },
+		becomeBussiness(){
+			this.$router.push('/MyBusiness');
+		}
+		
 	},
 	components: {
 		Footer, BackButton
@@ -95,6 +106,7 @@ export default {
 	align-items: center;
 }
 .wrapper {
+
 	width: 100%;
 	height: 100%;
 }
@@ -128,13 +140,20 @@ export default {
 	border-radius: 50%;
 }
 /****************** 管理地址按钮 ******************/
-.addButton {
-	  font-size: 4vw;
-	  position: absolute;
-	  left: 50%;          /* 将按钮水平居中 */
-	  transform: translateX(-50%);  /* 精确居中 */
-	  display: flex;       /* 使按钮内的内容居中 */
-	  justify-content: center;
-	  align-items: center;
-	}
+.addButton, .addButton2 {
+    font-size: 4vw;
+    position: absolute;  /* 确保按钮根据父容器定位 */
+    left: 50%;           /* 将按钮水平居中 */
+    transform: translateX(-50%);  /* 精确居中 */
+    display: flex;      /* 使按钮内的内容居中 */
+    justify-content: center;
+    align-items: center;
+    padding: 10px 20px; /* 按钮内边距 */
+}
+.addButton{
+	top: 100vw;
+}
+.addButton2{
+	top: 60vw;
+}
 </style>

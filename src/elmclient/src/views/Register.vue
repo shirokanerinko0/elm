@@ -50,7 +50,7 @@
 					<input type="radio" v-model="user.userSex" value="0" style="width:6vw;height: 3.2vw;">女
 				</div>
 			</li>
-			<li>
+			<!-- <li>
 				<div class="title">
 					用户类型：
 				</div>
@@ -58,7 +58,7 @@
 					<input type="radio" v-model="user.userType" value="1" style="width:6vw;height: 3.2vw;">商家
 					<input type="radio" v-model="user.userType" value="0" style="width:6vw;height: 3.2vw;">普通用户
 				</div>
-			</li>
+			</li> -->
 		</ul>
 
 		<div class="button-login">
@@ -83,7 +83,7 @@
 					password:'',
 					userName:'',
 					userSex:1,
-					// userType:1
+					userType:NULL
 				},
 				confirmPassword:''
 			}

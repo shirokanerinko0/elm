@@ -78,9 +78,6 @@
 						localStorage.setItem('userAvatar', user.userImg);
 						//user.userImg = '';
 						this.$setSessionStorage('user',user);
-						if(user.userType==1){
-							
-						}
 						this.$router.go(-1);
 					}
 				}).catch(error=>{
