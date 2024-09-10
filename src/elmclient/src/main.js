@@ -35,16 +35,16 @@ app.config.globalProperties.$removeLocalStorage = removeLocalStorage
 // 路由守卫
 router.beforeEach((to, from) => {
   let user = sessionStorage.getItem('user');
+  let business= sessionStorage.getItem('business');
   // 除了登录、注册、首页、商家列表、商家信息之外，都需要判断是否登录
   if (!(to.path === '/' || to.path === '/index' || to.path === '/businessList' || to.path === '/businessInfo' || to.path === '/login' || to.path === '/register')) {
     if (user === null) {
     return '/login';
     }
   }
-  if(to.path=='/businessFrom'&&user.userType==null){
-	  return 'MyBusiness';
+  if(to.path=='/businessFrom'&&business==null){
+	  return '/myBusiness';
   }
-  
   // 继续导航
   return true;
 });

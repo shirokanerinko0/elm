@@ -7,16 +7,14 @@ public class User {
 	private String userName;
 	private Integer userSex;
 	private String userImg;
-	private Integer userType;
-	
 	private Integer delTag;
+	private Integer userType;
 	public Integer getUserType() {
 		return userType;
 	}
 	public void setUserType(Integer userType) {
 		this.userType = userType;
 	}
-	
 	public String getUserId() {
 		return userId;
 	}

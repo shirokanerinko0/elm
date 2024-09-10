@@ -12,8 +12,9 @@ import EditUserAddress from '../views/EditUserAddress.vue'
 import Register from '../views/Register.vue'
 import MyUser from '../views/MyUser.vue'
 import Search from '../views/Search.vue'
-import MyBusiness from '@/views/MyBusiness.vue'
+import MyBusiness from '../views/MyBusiness.vue'
 import BusinessFrom from '../views/BusinessFrom.vue'
+import FoodInfo from '../views/FoodInfo.vue'
 const routes = [{
 		path: '/',
 		name: 'Home',
@@ -71,13 +72,17 @@ const routes = [{
 		name: 'Search',
 		component: Search
 	},{
-		path:'/MyBusiness',
+		path:'/myBusiness',
 		name:'MyBusiness',
 		component: MyBusiness
 	},{
 		path:'/businessFrom',
 		name:'BusinessFrom',
 		component: BusinessFrom
+	},{
+		path:'/foodInfo',
+		name:'FoodInfo',
+		component: FoodInfo
 	}
 
 ]

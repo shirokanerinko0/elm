@@ -82,8 +82,7 @@
 					userId:'',
 					password:'',
 					userName:'',
-					userSex:1,
-					userType:0
+					userSex:1
 				},
 				confirmPassword:''
 			}
@@ -122,14 +121,25 @@
 				}
 				const encryptedPassword = CryptoJS.MD5(this.user.password).toString();
 				console.log("加密后的数据:",encryptedPassword);
+				console.log(this.user);
 				const encryptedUser = {
 					...this.user,
-					password: encryptedPassword  // 使用加密后的密码
+					password: encryptedPassword,  // 使用加密后的密码
 				};
+				console.log(this.user.userId);
+				console.log(encryptedUser.password);
+				console.log(this.user.userName);
+				console.log(this.user.userSex);
 				//注册请求
-				this.$axios.post('User', this.$qs.stringify(
-					encryptedUser
-				)).then(response => {
+				this.$axios.post('User', null,
+				{
+					params:{
+					    userId: this.user.userId,
+					    password: encryptedUser.password,
+					    userName: this.user.userName,
+					    userSex: this.user.userSex,
+					}
+				}).then(response => {
 					if(response.data>0){
 						alert('注册成功！');
 						this.$router.go(-1);

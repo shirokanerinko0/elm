@@ -7,7 +7,7 @@
 		<div class="user-info">
 			<h3 >商家名称： {{ this.business.businessName }}</h3>
 			<div class="avatar">
-				<img :src="this.user.userImg || defaultAvatar" alt="商家头像" />
+				<img :src="this.business.businessImg || defaultAvatar" alt="商家头像" />
 				<input type="file" @change="handleFileChange" ref="fileInput" style="display: none;" />
 				<button @click="triggerFileInput" style="font-size: 5vw;">上传头像</button>
 			</div>
@@ -34,14 +34,7 @@ export default {
 	},
 	created() {
 		this.user = this.$getSessionStorage('user');
-		this.user.userImg = localStorage.getItem('userAvatar') ||this.user.userImg||'';
-		this.$axios.post('/Business',{
-		businessId:this.user.userType
-			}).then(response => {
-				this.business=response.data;
-			}).catch(error => {
-				console.error('获取商家信息失败', error);
-			});
+		this.business=this.$getSessionStorage('business');
 	},
 	mounted() {
 	  window.scrollTo(0, 0);  // 滚动到顶部

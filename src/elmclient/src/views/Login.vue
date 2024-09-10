@@ -50,7 +50,7 @@
 				userId:'',
 				password:'',
 				userType:0,
-				businessId:''
+				businessId:null
 			}
 		},
 		methods:{
@@ -78,12 +78,29 @@
 						localStorage.setItem('userAvatar', user.userImg);
 						//user.userImg = '';
 						this.$setSessionStorage('user',user);
+						this.businessId=user.userType;
+						console.log(this.businessId);
+						if(this.businessId!=null){
+							this.$axios.post('Business',{
+								businessId:this.businessId
+							}).then(response=>{
+								let business = response.data;
+								if(business==null){
+									alert('没有这个商家：'+this.businessId);
+								}else{
+									this.$setSessionStorage('business',business);
+								}
+							}).catch(error=>{
+								console.error(error);
+							});
+						}
 						this.$router.go(-1);
 					}
 				}).catch(error=>{
 					alert('用户名或密码不正确！');
 					console.error(error);
 				});
+				
 			},
 			register(){
 				this.$router.push({path:'/register'});

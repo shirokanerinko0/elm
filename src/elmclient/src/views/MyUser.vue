@@ -49,6 +49,7 @@ export default {
 	methods: {
 		logout() {
 			sessionStorage.removeItem('user');
+			sessionStorage.removeItem('business');
 			this.$router.go(-1);
 		},
 		triggerFileInput() {
@@ -81,10 +82,10 @@ export default {
 		},
 		toAddress() {
     		// 使用 Vue Router 导航到新的页面
-    		this.$router.push('/UserAddress'); 
+    		this.$router.push('/userAddress'); 
         },
 		becomeBussiness(){
-			this.$router.push('/MyBusiness');
+			this.$router.push('/businessFrom');
 		}
 		
 	},
