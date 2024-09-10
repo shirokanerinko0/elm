@@ -31,9 +31,8 @@ public class UserController {
 
 	@PostMapping("/User")
 	public int saveUser(@RequestParam("userId") String userId, @RequestParam("password") String password,
-			@RequestParam("userName") String userName, @RequestParam("userSex") Integer userSex,
-			@RequestParam("userType") Integer userType) throws Exception {
-		return userService.saveUser(userId, password, userName, userSex, userType);
+			@RequestParam("userName") String userName, @RequestParam("userSex") Integer userSex) throws Exception {
+		return userService.saveUser(userId, password, userName, userSex);
 	}
 
 }

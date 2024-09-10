@@ -18,7 +18,6 @@ public class UserServiceImpl implements UserService {
 	// 只返回必要用户信息
 	@Override
 	public UserDTO getUserByIdByPass(String userId, String password) {
-		String encodedPassword = PasswordEncoderUtil.encode(password);
 		User foundUser = userMapper.getUserByIdByPass(userId);
 		if (foundUser != null && PasswordEncoderUtil.matches(password, foundUser.getPassword()) == true) {
 			return new UserDTO(foundUser.getUserId(), foundUser.getUserName(), foundUser.getUserSex(),
@@ -33,8 +32,8 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public int saveUser(String userId, String password, String userName, Integer userSex, Integer userType) {
+	public int saveUser(String userId, String password, String userName, Integer userSex) {
 		String encodedPassword = PasswordEncoderUtil.encode(password);
-		return userMapper.saveUser(userId, encodedPassword, userName, userSex, userType);
+		return userMapper.saveUser(userId, encodedPassword, userName, userSex);
 	}
 }

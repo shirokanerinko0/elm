@@ -7,6 +7,7 @@ public class User {
 	private String userName;
 	private Integer userSex;
 	private String userImg;
+	private Integer userType;
 	
 	private Integer delTag;
 	public Integer getUserType() {
@@ -15,7 +16,6 @@ public class User {
 	public void setUserType(Integer userType) {
 		this.userType = userType;
 	}
-	private Integer userType;
 	
 	public String getUserId() {
 		return userId;

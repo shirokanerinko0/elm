@@ -83,7 +83,7 @@
 					password:'',
 					userName:'',
 					userSex:1,
-					userType:NULL
+					userType:0
 				},
 				confirmPassword:''
 			}

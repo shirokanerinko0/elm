@@ -3,6 +3,7 @@ package com.neusoft.elmboot.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -29,5 +30,10 @@ public class BusinessController {
 	@RequestMapping("/BusinessesByKeyWord")
 	public List<Business> listBusinessByKeyWord(@RequestParam String keyWord) throws Exception{
 		return businessService.listBusinessByKeyWord(keyWord);
+	}
+	
+	@PostMapping("/BusinessRegistration")
+	public Integer saveBusiness(@RequestParam String userId, @RequestParam String password, @RequestParam String businessName) {
+		return businessService.saveBusiness(userId, password, businessName);
 	}
 }
