@@ -33,8 +33,8 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public int saveUser(String userId, String password, String userName, Integer userSex, Integer userType) {
+	public int saveUser(String userId, String password, String userName, Integer userSex) {
 		String encodedPassword = PasswordEncoderUtil.encode(password);
-		return userMapper.saveUser(userId, encodedPassword, userName, userSex, userType);
+		return userMapper.saveUser(userId, encodedPassword, userName, userSex);
 	}
 }
