@@ -81,11 +81,14 @@
 						this.businessId=user.userType;
 						console.log(this.businessId);
 						if(this.businessId!=null){
-							this.$axios.post('Business',{
-								businessId:this.businessId
+							this.$axios.post('Business',null,{
+								params:{
+								businessId:this.businessId,
+								}
 							}).then(response=>{
 								let business = response.data;
-								if(business==null){
+								console.log(business);
+								if(!business){
 									alert('没有这个商家：'+this.businessId);
 								}else{
 									this.$setSessionStorage('business',business);

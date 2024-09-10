@@ -18,7 +18,7 @@
 			<div>
 				<button class="addButton" @click="toAddress">管理配送地址</button>	
 			</div>
-			<div><button class="addButton2" @click="becomeBussiness">我要开店！</button></div>
+			<div><button class="addButton2" @click="becomeBussiness">我的商家</button></div>
 		</div>
 		
 
