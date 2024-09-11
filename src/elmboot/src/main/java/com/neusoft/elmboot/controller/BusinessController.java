@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -35,5 +36,10 @@ public class BusinessController {
 	@PostMapping("/BusinessRegistration")
 	public Integer saveBusiness(@RequestParam String userId, @RequestParam String password, @RequestParam String businessName) {
 		return businessService.saveBusiness(userId, password, businessName);
+	}
+	
+	@PutMapping("/Business")
+	public int updateBusiness(Business business) throws Exception{
+		return businessService.updateBusiness(business);
 	}
 }

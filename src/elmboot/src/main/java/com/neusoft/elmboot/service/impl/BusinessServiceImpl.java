@@ -47,4 +47,9 @@ public class BusinessServiceImpl implements BusinessService{
 		}
 		return null;
 	}
+	
+	@Override
+	public int updateBusiness(Business business) {
+		return businessMapper.updateBusiness(business);
+	}
 }

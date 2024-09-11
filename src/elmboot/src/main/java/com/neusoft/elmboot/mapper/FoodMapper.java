@@ -25,7 +25,7 @@ public interface FoodMapper {
 	@Insert("Insert into food (foodName, foodExplain, foodImg, foodPrice, businessId, quantity) values (#{foodName}, #{foodExplain}, #{foodImg}, #{foodPrice}, #{businessId}, #{quantity})")
 	public int saveFood(String foodName, String foodExplain, String foodImg,Double foodPrice, Integer businessId, Integer quantity);
 	
-	@Delete("delete from food where foodId = #{foodId}")
+	@Update("update food set businessId = 0 where foodId = #{foodId}")
 	public int removeFood(Integer foodId);
 	
 	@Update("update food set foodName = #{foodName}, foodExplain = #{foodExplain}, foodImg = #{foodImg}, foodPrice = #{foodPrice}, businessId = #{businessId}, quantity = #{quantity}")

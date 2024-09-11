@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import com.neusoft.elmboot.po.Business;
 
@@ -25,4 +26,7 @@ public interface BusinessMapper {
 	
 	@Select("select count(*) from business")
 	public Integer getBusinessesNumber();
+	
+	@Update("update business set businessName = #{businessName}, businessAddress = #{businessAddress}, businessExplain = # {businessExplain}, businessImg = #{businessImg}, orderTypeId = #{orderTypeId}, starPrice = #{starPrice}, deliveryPrice = #{deliveryPrice} where businessId = #{businessId}")
+	public int updateBusiness(Business business);
 }

@@ -10,4 +10,5 @@ public interface BusinessService {
 	public Business getBusinessById(Integer businessId);
 	public List<Business> listBusinessByKeyWord(String keyWord);
 	public Integer saveBusiness(String userId, String password, String businessName);
+	public int updateBusiness(Business business);
 }

@@ -13,4 +13,6 @@ public interface FoodService {
 	public int removeFood(Integer foodId);
 	
 	public int updateFood(Food food);
+	
+	public Food getFoodById(Integer foodId);
 }

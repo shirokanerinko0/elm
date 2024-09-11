@@ -34,4 +34,9 @@ public class FoodServiceImpl implements FoodService{
 	public int updateFood(Food food) {
 		return foodMapper.updateFood(food);
 	}
+	
+	@Override
+	public Food getFoodById(Integer foodId) {
+		return foodMapper.getFoodById(foodId);
+	}
 }

@@ -5,6 +5,7 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -49,5 +50,10 @@ public class FoodController {
 	@DeleteMapping("/Food")
 	public int removeFood(@RequestParam Integer foodId) throws Exception {
 		return foodService.removeFood(foodId);
+	}
+	
+	@GetMapping("/Food")
+	public Food getFoodById(@RequestParam Integer foodId) throws Exception {
+		return foodService.getFoodById(foodId);
 	}
 }
