@@ -9,10 +9,10 @@
 
 		<!-- 食品列表部分 -->
 		<ul class="food">
-					<li v-for="(item,index) in foodArr">
-						<div @click="toFoodInfo(item.foodId)" class="food-left">
+					<li v-for="(item,index) in foodArr" @click="toFoodInfo(item.foodId)">
+						<div  class="food-left">
 							<img :src="item.foodImg" style="width: 20vw;height: 20vw;">
-							<div class="food-left-info">
+							<div class="food-right">
 								<h3>{{item.foodName}}</h3>
 								<p>{{item.foodExplain}}</p>
 								<p>&#165;{{item.foodPrice}}</p>
@@ -100,66 +100,61 @@
 	}
 
 	/****************** 商家列表部分 ******************/
-	.wrapper .food {
-		width: 100%;
-		margin-top: 12vw;
-		margin-bottom: 14vw;
-	}
+.wrapper .food {
+	width: 100%;
+	/* 留出 header 的高度，防止被遮挡 */
+	margin-top: 14vw; /* header 的高度为 12vw，多留出一点间距 */
+	margin-bottom: 1vw;
+}
 
-	.wrapper .food li {
-		width: 100%;
-		box-sizing: border-box;
-		padding: 2.5vw;
-		border-bottom: solid 1px #DDD;
-		user-select: none;
-		cursor: pointer;
 
-		display: flex;
-		align-items: center;
-	}
+.wrapper .food li {
+	width: 100%;
+	box-sizing: border-box;
+	padding: 2.5vw;
+	border-bottom: solid 1px #DDD;
+	user-select: none;
+	cursor: pointer;
 
-	.wrapper .food li .food-img {
-		/*这里设置为相当定位，成为business-img-quantity元素的父元素*/
-		position: relative;
-	}
+	display: flex;
+	align-items: center;
 
-	.wrapper .food li .food-img img {
-		width: 20vw;
-		height: 20vw;
-	}
+	/* 修改高度与新增菜品那一行保持一致 */
+	height: 20vw;
+}
 
-	.wrapper .food li .food-img .food-img-quantity {
-		width: 5vw;
-		height: 5vw;
-		background-color: red;
-		color: #fff;
-		font-size: 3.6vw;
-		border-radius: 2.5vw;
+/* 图片部分 */
+.wrapper .food li .food-left {
+	display: flex;
+	align-items: center;
+}
 
-		display: flex;
-		justify-content: center;
-		align-items: center;
+.wrapper .food li .food-left img {
+	width: 20vw;
+	height: 20vw;
+	border-radius: 5px; /* 可选: 使图片稍微圆角 */
+}
 
-		/*设置成绝对定位，不占文档流空间*/
-		position: absolute;
-		right: -1.5vw;
-		top: -1.5vw;
-	}
+/* 右边信息部分 */
+.wrapper .food li .food-right {
+	margin-left: 3vw; /* 控制图片与文字之间的间距 */
+	flex-grow: 1;
+}
 
-	.wrapper .food li .food-info {
-		margin-left: 3vw;
-	}
+.wrapper .food li .food-right h3 {
+	font-size: 4vw;
+	color: #333;
+}
 
-	.wrapper .food li .food-info h3 {
-		font-size: 3.8vw;
-		color: #555;
-	}
+.wrapper .food li .food-right p {
+	font-size: 3vw;
+	color: #666;
+	margin-top: 1vw;
+}
 
-	.wrapper .food li .food-info p {
-		font-size: 3vw;
-		color: #888;
-		margin-top: 2vw;
-	}
+.wrapper .food li .food-right p:nth-child(4) {
+	margin-top: 0.5vw;
+}
 
 
 	.wrapper .addbtn {
@@ -168,7 +163,7 @@
 		border-top: solid 1px #DDD;
 		border-bottom: solid 1px #DDD;
 		background-color: #e8eef0;
-		margin-top: 4vw;
+		margin-top: 1vw;
 
 		display: flex;
 		justify-content: flex-start;
