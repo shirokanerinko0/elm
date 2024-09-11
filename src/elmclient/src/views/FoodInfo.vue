@@ -31,7 +31,7 @@
 				<textarea v-model="food.foodExplain"></textarea>
 			</div>
 			<div class="food-input-group">
-				<label>限量</label>
+				<label>数量</label>
 				<input type="text" v-model="food.quantity">
 			</div>
 			<div class="button-group">
@@ -64,13 +64,23 @@ export default {
 		this.user = this.$getSessionStorage('user');
 		this.business = this.$getSessionStorage('business');
 		// 根据foodId查询食品信息
-		this.$axios.post('Food', this.$qs.stringify({
-			foodId: this.foodId
-		})).then(response => {
+		console.log(this.foodId);
+		this.$axios.get('GetOneFood',{
+			params:{
+				foodId: this.foodId
+			}
+		}).then(response => {
 			this.food = response.data;
+			console.log(response.data);
+			console.log(this.food);
+			if(this.food.businessId!=this.business.businessId){
+				alert("当前食品不属于你");
+				this.$router.go(-1);
+			}
 		}).catch(error => {
 			console.error(error);
 		});
+		
 	},
 	components: {
 		Footer, BackButton

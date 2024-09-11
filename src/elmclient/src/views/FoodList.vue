@@ -65,10 +65,10 @@
 		},
 		methods:{
 			toFoodInfo(foodId){
-				this.$router.push({path:'/FoodInfo',query:{foodId:foodId}});
+				this.$router.push({path:'/foodInfo',query:{foodId:foodId}});
 			},
 			newFood(businessId){
-				this.$router.push({path:'/NewFood',query:{businessId:businessId}});
+				this.$router.push({path:'/newFood',query:{businessId:businessId}});
 			}
 		}
 	}

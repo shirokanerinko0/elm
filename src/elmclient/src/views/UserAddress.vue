@@ -72,6 +72,7 @@
 			setDeliveryAddress(deliveryAddress){
 				//把用户选择的默认送货地址存储到localStorage中
 				this.$setLocalStorage(this.user.userId,deliveryAddress);
+				if(this.businessId!=-1)
 				this.$router.push({path:'/orders',query:{businessId:this.businessId}});
 			},
 			toAddUserAddress(){

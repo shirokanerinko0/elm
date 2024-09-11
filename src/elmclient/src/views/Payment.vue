@@ -96,12 +96,10 @@
 				         orderId: this.orderId
 				        }
 				    }).then(response=>{
-					console.log(response.data.length);
-					if(response.data.length===0)
 					alert("支付成功");
-					else alert("商品数量不足");
 					this.$router.go(-1);
 				}).catch(error=>{
+					alert("商品数量不足");
 					console.error(error);
 				});
 			}

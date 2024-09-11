@@ -85,7 +85,7 @@ export default {
 				});
 		},
 		toAddress() {
-			this.$router.push('/userAddress');
+			this.$router.push({path:'/userAddress',query:{businessId:-1}});
 		},
 		becomeBussiness() {
 			this.$router.push('/businessFrom');
