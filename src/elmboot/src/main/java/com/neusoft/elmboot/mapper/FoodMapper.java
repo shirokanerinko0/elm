@@ -30,4 +30,7 @@ public interface FoodMapper {
 	
 	@Update("update food set foodName = #{foodName}, foodExplain = #{foodExplain}, foodImg = #{foodImg}, foodPrice = #{foodPrice}, businessId = #{businessId}, quantity = #{quantity} where foodId = #{foodId}")
 	public int updateFood(Food food);
+	
+	@Delete("delete from Cart where foodId = #{foodId}")
+	public int deleteCart(Integer foodId);
 }

@@ -43,7 +43,10 @@ public class FoodController {
 	}
 	
 	@PutMapping("/Food")
-	public int updateFood(Food food) throws Exception {
+	public int updateFood(@RequestBody Food food) throws Exception {
+		if (food.getFoodName() == null || food.getFoodName().isEmpty()) {
+	        throw new IllegalArgumentException("食品名称不能为空");
+		}
 		return foodService.updateFood(food);
 	}
 	

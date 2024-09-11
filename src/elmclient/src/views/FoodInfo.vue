@@ -4,19 +4,20 @@
 		<!-- header部分 -->
 		<header>
 			<back-button></back-button>
-			<p>{{ food.foodName }}</p>
+			<p>食品管理</p>
 		</header>
 
 		<!-- 食品logo部分 -->
 		<div class="business-logo">
-			<img :src="business.businessImg" alt="Business Logo">
+			<img :src="food.foodImg" alt="Business Logo" style="height: 40vw;width: 40vw;">
 		</div>
 
 		<!-- 食品信息部分 -->
 		<div class="food-info-container">
 			<div class="food-input-group">
 				<label>图片</label>
-				<input type="text" v-model="food.foodImg">
+				<input type="file" @change="handleFileChange" ref="fileInput" style="display: none;" />
+				<button class="upload-btn" @click="triggerFileInput" style="font-size: 4vw;">上传图片</button>
 			</div>
 			<div class="food-input-group">
 				<label>名称</label>
@@ -71,8 +72,6 @@ export default {
 			}
 		}).then(response => {
 			this.food = response.data;
-			console.log(response.data);
-			console.log(this.food);
 			if(this.food.businessId!=this.business.businessId){
 				alert("当前食品不属于你");
 				this.$router.go(-1);
@@ -87,18 +86,16 @@ export default {
 	},
 	methods: {
 		submitChanges() {
-			this.$axios.put('Food', {
-				food: this.food
-			}).then(response => {
+			if (!this.food.foodName) {
+			        alert('食品名称不能为空');
+			        return;
+			}
+			console.log(this.food);
+			this.$axios.put('Food', 
+				this.food
+			).then(response => {
 				if (response.data > 0) {
 					alert("更新成功");
-					this.$axios.post('Food', this.$qs.stringify({
-						foodId: this.foodId
-					})).then(response => {
-						this.food = response.data;
-					}).catch(error => {
-						console.error(error);
-					});
 				} else {
 					alert("更新失败");
 				}
@@ -107,15 +104,32 @@ export default {
 			});
 		},
 		removeFood() {
-			this.$axios.post('/Food', this.$qs.stringify({
-				foodId: this.foodId
-			})).then(response => {
-				if (response.data > 1) {
-					alert("更新成功");
+			this.$axios.delete('Food',{
+				params: { foodId: this.foodId }
+			}).then(response => {
+				if (response.data > 0) {
+					alert("删除食品成功");
+					this.$router.go(-1);
 				}
 			}).catch(error => {
 				console.error(error);
 			});
+		},triggerFileInput() {
+			this.$refs.fileInput.click();
+		},
+		handleFileChange(event) {
+			const file = event.target.files[0];
+			if (!file) return;
+			if (file.size > 2 * 1024 * 1024) {
+				alert(`图片大小超过2MB，请选择更小的图片`);
+				return;
+			}
+			const reader = new FileReader();
+			reader.onloadend = () => {
+				const base64Image = reader.result.split(',')[1];
+				this.food.foodImg = "data:image/png;base64," + base64Image;
+			};
+			reader.readAsDataURL(file);
 		}
 	}
 }
