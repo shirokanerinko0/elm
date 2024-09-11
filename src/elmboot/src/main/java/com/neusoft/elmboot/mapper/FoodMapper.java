@@ -22,7 +22,7 @@ public interface FoodMapper {
 	@Update("update food set quantity = quantity - #{odQuantity} where foodId = #{foodId}")
 	public void orderFood(Integer foodId, Integer odQuantity);
 	
-	@Insert("Insert into food values(foodName, foodExplain, foodImg, foodPrice, businessId, quantity) values (#{foodName}, #{foodExplain}, #{foodImg}, #{foodPrice}, #{businessId}, #{quantity})")
+	@Insert("Insert into food (foodName, foodExplain, foodImg, foodPrice, businessId, quantity) values (#{foodName}, #{foodExplain}, #{foodImg}, #{foodPrice}, #{businessId}, #{quantity})")
 	public int saveFood(String foodName, String foodExplain, String foodImg,Double foodPrice, Integer businessId, Integer quantity);
 	
 	@Delete("delete from food where foodId = #{foodId}")

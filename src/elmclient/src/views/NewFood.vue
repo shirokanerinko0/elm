@@ -27,7 +27,7 @@
 
             <div class="input-group">
                 <label>价格</label>
-                <input type="text" v-model="foodPrice" class="input-field">
+                <input type="number" v-model="foodPrice" step="0.01" class="input-field" min="0" @input="validatePrice">
             </div>
 
             <div class="input-group">
@@ -36,14 +36,14 @@
             </div>
 
             <div class="input-group">
-                <label>限量</label>
-                <input type="text" v-model="quantity" class="input-field">
+                <label>数量</label>
+                <input type="number" v-model="quantity" class="input-field" min="0" @input="validateQuantity">
             </div>
-
             <div>
                 <button @click="submitChanges" class="submit-button">确认添加</button>
             </div>
         </div>
+		<div class="blank" style="height: 10vw"></div>
         <Footer></Footer>
     </div>
 </template>
@@ -55,7 +55,7 @@ import Cropper from 'cropperjs';
 import 'cropperjs/dist/cropper.css'; // 引入裁剪样式
 
 export default {
-    name: 'FoodList',
+    name: 'NewFood',
     data() {
         return {
             foodName: '',
@@ -109,22 +109,42 @@ export default {
             }
         },
         submitChanges() {
-            this.$axios.post('/OneFood', null,{
-                params:{
+			console.log(this.foodName);
+			console.log(this.foodExplain);
+			console.log(this.foodImg);
+			console.log(this.foodPrice);
+			console.log(this.businessId);
+			console.log(this.quantity);
+			
+            this.$axios.post('/OneFood',{
                 foodName: this.foodName,
                 foodExplain: this.foodExplain,
                 foodImg: this.foodImg,
-                foodPrice: this.foodPrice,
-                businessId: this.businessId,
-                quantity: this.quantity
-                } 
+				foodPrice: parseFloat(this.foodPrice),  // 使用 parseFloat 确保转换为浮点数
+				businessId: Number(this.businessId),  // 确保 businessId 是数字类型
+				quantity: Number(this.quantity)  // 确保 quantity 是数字类型
             }).then(response => {
-                if (response.data > 0) alert("更新成功");
+                if (response.data > 0) {
+					alert("更新成功");
+					this.$router.go(-1);
+				}
                 else alert("更新失败");
             }).catch(error => {
                 console.error('失败:', error);
             });
-        }
+        },
+		validatePrice() {
+		    if (this.foodPrice < 0) {
+				alert("价格不能为负数");
+		      this.foodPrice = 0;
+		    }
+		},
+		validateQuantity() {
+		    if (this.quantity < 0) {
+				alert("数量不能为负数");
+		      this.quantity = 0;
+		    }
+		}
     }
 }
 </script>

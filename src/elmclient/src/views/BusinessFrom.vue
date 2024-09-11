@@ -50,7 +50,7 @@
 		<div class="newArea">
 			<p @click="toFoodList">---我的菜品---</p>
 		</div>
-
+		<div class="blank" style="height: 15vw"></div>	
 		<Footer></Footer>
 	</div>
 </template>
