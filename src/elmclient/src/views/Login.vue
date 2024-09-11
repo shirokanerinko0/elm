@@ -80,9 +80,9 @@
 						//sessionstorage有容量限制，为了防止数据溢出，所以不将userImg数据放入session中
 						localStorage.setItem('userAvatar', user.userImg);
 						//user.userImg = '';
+						console.log("userId："+user.userId);
 						this.$setSessionStorage('user',user);
 						this.businessId=user.userType;
-						console.log(this.businessId);
 						if(this.businessId!=null){
 							this.$axios.post('Business',null,{
 								params:{

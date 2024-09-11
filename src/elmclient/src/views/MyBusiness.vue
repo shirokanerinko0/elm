@@ -18,7 +18,7 @@
                     用户密码：
                 </div>
                 <div class="content">
-                    <input type="text" v-model="confirmpassword" placeholder="输入你的密码">
+                    <input type="password" v-model="confirmpassword" placeholder="输入你的密码">
                 </div>
             </li>
         </ul>
@@ -81,10 +81,14 @@ export default {
 				else {
                     alert('恭喜成为商家！');
 					if(businessId!=null){
-						this.$axios.post('Business',{
-							businessId:businessId
+						this.$axios.post('Business',null,{
+							params:{
+							businessId:businessId,
+							}
 						}).then(response=>{
 							this.business = response.data;
+							console.log(response.data);
+							console.log('Type of response.data:', typeof response.data);
 							if(this.business==null){
 								alert('没有这个商家：'+businessId);
 							}else{

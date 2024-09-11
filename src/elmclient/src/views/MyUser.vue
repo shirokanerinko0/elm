@@ -40,8 +40,7 @@ export default {
 		};
 	},
 	created() {
-		this.user = this.$getSessionStorage('user');
-		this.user.userImg = localStorage.getItem('userAvatar') || this.user.userImg || '';
+		this.user = this.$getSessionStorage('user');		
 	},
 	mounted() {
 		window.scrollTo(0, 0); // 滚动到顶部
