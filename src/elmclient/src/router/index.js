@@ -16,6 +16,7 @@ import MyBusiness from '../views/MyBusiness.vue'
 import BusinessFrom from '../views/BusinessFrom.vue'
 import FoodInfo from '../views/FoodInfo.vue'
 import FoodList from '../views/FoodList.vue'
+import newFood from '../views/NewFood.vue'
 const routes = [{
 		path: '/',
 		name: 'Home',
@@ -88,6 +89,10 @@ const routes = [{
 		path:'/foodList',
 		name:'FoodList',
 		component: FoodList
+	},{
+		path:'/newFood',
+		name:'NewFood',
+		component: newFood
 	}
 
 ]

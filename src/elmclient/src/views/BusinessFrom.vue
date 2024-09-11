@@ -27,21 +27,21 @@
 			</div>
 			<div>
 				商家地址<input type="text" v-model="business.businessAddress"
-					style="font-size: 4vw; width: 50vw;height: 4vw;">{{ business.businessAddress }}</input>
+					style="font-size: 4vw; width: 50vw;height: 4vw;"/>
 
 			</div>
 			<div>起送价格<input type="text" v-model="business.starPrice"
-					style="font-size: 4vw; width: 20vw;height: 4vw;">{{ business.businessAddress }}</input>
+					style="font-size: 4vw; width: 20vw;height: 4vw;"/>
 
 			</div>
 			<div>
 				配送价格<input type="text" v-model="business.deliveryPrice"
-					style="font-size: 4vw; width: 20vw;height: 4vw;">{{ business.businessAddress }}</input>
+					style="font-size: 4vw; width: 20vw;height: 4vw;"/>
 
 			</div>
 			<div>
 				商家简介<input type="text" v-model="business.businessExplain"
-					style="font-size: 4vw; width: 50vw;height: 20vw;">{{ business.businessAddress }}</input>
+					style="font-size: 4vw; width: 50vw;height: 20vw;"/>
 			</div>
 			<div>
 				<button @click="submitChanges" class="addButton" style="font-size: 4vw;">保存更改</button>
@@ -148,117 +148,156 @@ export default {
 
 <style scoped>
 .layoutButton {
-	font-size: 5vw;
-	position: absolute;
-	bottom: 16vw;
-	left: 50%;
-	transform: translateX(-50%);
-	display: flex;
-	justify-content: center;
-	align-items: center;
+    font-size: 5vw;
+    position: absolute;
+    bottom: 16vw;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .wrapper {
-
-	width: 100%;
-	height: 100%;
+    width: 100%;
+    height: 100%;
+    background-color: #f7f8fa; /* 更柔和的背景色 */
 }
 
 .wrapper header {
-	width: 100%;
-	height: 12vw;
-	background-color: #0097FF;
-	color: #fff;
-	font-size: 4.8vw;
-	position: fixed;
-	left: 0;
-	top: 0;
-	z-index: 1000;
-	display: flex;
-	justify-content: center;
-	align-items: center;
+    width: 100%;
+    height: 12vw;
+    background-color: #007bff; /* 调整为深蓝色 */
+    color: #fff;
+    font-size: 4.8vw;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* 添加阴影 */
 }
 
 .wrapper .user-info {
-	margin-top: 12vw;
-	padding: 4vw;
-	font-size: 4vw;
-	font-weight: 300;
-	color: black;
+    margin-top: 16vw; /* 加大上边距 */
+    padding: 6vw;
+    font-size: 4vw;
+    font-weight: 400; /* 调整字体厚度 */
+    color: #333; /* 更深的文字颜色，提升可读性 */
+    background-color: #fff; /* 设置为白色背景 */
+    border-radius: 10px; /* 添加圆角 */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* 添加阴影 */
+}
+
+.wrapper .user-info h3 {
+    font-size: 5vw;
+    font-weight: bold;
+    margin-bottom: 4vw;
 }
 
 .wrapper .user-info .avatar {
-	display: flex;
-	flex-direction: column;
-	/* 将内容垂直排列 */
-	justify-content: center;
-	/* 垂直居中 */
-	align-items: center;
-	/* 水平居中 */
-	text-align: center;
-	margin-bottom: 10px;
-	/* 可根据需要调整与下方内容的距离 */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 10px;
 }
 
 .wrapper .user-info .avatar img {
-	width: 20vw;
-	height: 20vw;
-	border-radius: 50%;
+    width: 20vw;
+    height: 20vw;
+    border-radius: 50%;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* 为头像添加阴影 */
+    object-fit: cover; /* 确保图片不会被拉伸 */
+}
+
+.wrapper .user-info .avatar button {
+    font-size: 4vw;
+    background-color: #007bff;
+    color: white;
+    padding: 1.5vw 3vw;
+    border-radius: 5px;
+    margin-top: 2vw;
+    cursor: pointer;
+    border: none;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
+}
+
+.wrapper .user-info .avatar button:hover {
+    background-color: #0056b3; /* 悬停效果 */
 }
 
 .wrapper .user-info .biaodan {
-	font-size: 4vw;
-	width: 50vw;
-	height: 6vw;
+    font-size: 4vw;
+    width: 100%;
+    height: 6vw;
+    margin-top: 2vw;
+    padding: 0.5vw;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    background-color: #f9f9f9;
+}
 
+.wrapper .user-info input[type="text"] {
+    font-size: 4vw;
+    width: 100%;
+    height: 6vw;
+    padding: 1vw;
+    margin-top: 2vw;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    background-color: #f9f9f9;
 }
 
 .wrapper .user-info .addButton {
     font-size: 4vw;
     display: flex;
-    justify-content: center;  /* 水平居中 */
-    align-items: center;  /* 垂直居中 */
-    padding: 10px 20px;  /* 按钮内边距 */
-    margin-top: 2vw;
-    height: 10vw;
-    margin-left: auto;
-    margin-right: auto;
-    width: fit-content;  /* 按钮宽度根据内容自适应 */
+    justify-content: center;
+    align-items: center;
+    padding: 2vw 4vw;
+    margin-top: 4vw;
+    background-color: #28a745;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    border: none;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
 }
+
+.wrapper .user-info .addButton:hover {
+    background-color: #218838; /* 悬停时的效果 */
+}
+
 /****************** 我的菜品 ******************/
 .wrapper .newArea {
-		/**
-		 * 设置容器宽度95%，然后水平居中，这样两边留白; 
-		 * 这里不能用padding，因为背景图片也会覆盖padding
-		 */
-		width: 95%;
-		margin: 0 auto;
-		height: 29vw;
+    width: 100%;
+    margin: 0 auto;
+    height: 29vw;
+    background-image: url(../assets/index_banner.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    box-sizing: border-box;
+    padding: 2vw 6vw;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* 添加阴影 */
+}
 
-		/*此三个样式组合，可以保证背景图片充满整个容器*/
-		background-image: url(../assets/index_banner.png);
-		background-repeat: no-repeat;
-		background-size: cover;
+.wrapper .newArea p {
+    font-size: 6vw;
+    color: #e74c3c; /* 调整为更亮的红色 */
+    margin-top: 8vw;
+    margin-left: 7vw;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
 
-		box-sizing: border-box;
-		padding: 2vw 6vw;
-	}
+.wrapper .newArea p:hover {
+    color: #c0392b; /* 悬停时的颜色变化 */
+}
 
-	.wrapper .newArea h3 {
-		font-size: 4.2vw;
-		margin-bottom: 1.2vw;
-	}
-
-	.wrapper .newArea p {
-		font-size: 6vw;
-		color: #ac1515;
-		margin-top: 8vw;
-		margin-left: 7vw;
-	}
-
-	.wrapper .newArea a {
-		font-size: 3vw;
-		color: #C79060;
-		font-weight: 700;
-	}
 </style>

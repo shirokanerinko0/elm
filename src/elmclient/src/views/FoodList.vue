@@ -9,21 +9,26 @@
 
 		<!-- 食品列表部分 -->
 		<ul class="food">
-			<li v-for="item in foodArr" @click="toFoodInfo(item.businessId,item.foodId)">
-				<div class="food-img">
-					<img :src="item.foodImg">
-				</div>
-				<div class="food-info">
-					<h3>{{item.foodName}}</h3>
-					<p>价格&#165;{{item.foodPrice}}</p>
-					<p>{{item.foodExplain}}</p>
-				</div>
-			</li>
-		</ul>
+					<li v-for="(item,index) in foodArr" ">
+						<div @click="toFoodInfo(item.foodId)" class="food-left">
+							<img :src="item.foodImg">
+							<div class="food-left-info">
+								<h3>{{item.foodName}}</h3>
+								<p>{{item.foodExplain}}</p>
+								<p>&#165;{{item.foodPrice}}</p>
+								<p>{{ item.quantity }}</p>
+							</div>
+						</div>
+					</li>
+				</ul>
+		<div class="addbtn" @click="newFood(business.businessId)">
+			<img src="../assets/more.png" alt="新增图标" class="icon-img">
+			<i class="fa fa-plus-circle"></i>
+			<p>新增菜品</p>
+		</div>		
 		<div class="blank" style="height: 5vw"></div>
 		<!-- 底部菜单部分 -->
-		<Footer>  </Footer> 
-
+		<Footer> </Footer> 
 	</div>
 </template>
 
@@ -36,17 +41,16 @@
 		name:'FoodList',
 		data(){
 			return {
-				orderTypeId: this.$route.query.orderTypeId,
 				foodArr:[],
-				user:{}
+				user:{},
+				business:{},	
 			}
 		},
 		created() {
 			this.user = this.$getSessionStorage('user');
-			
-			//根据orderTypeId查询商家信息
-			this.$axios.post('Food',this.$qs.stringify({
-				orderTypeId:this.orderTypeId
+			this.business =this.$getSessionStorage('business');
+			this.$axios.post('Food',this.$qs.stringify({				
+				businessId:this.business.businessId
 			})).then(response=>{
 				this.foodArr = response.data;
 			}).catch(error=>{
@@ -56,9 +60,15 @@
 		components:{
 			Footer,BackButton
 		},
+		mounted() {
+		  window.scrollTo(0, 0);  // 滚动到顶部
+		},
 		methods:{
-			toFoodInfo(businessId,foodId){
-				this.$router.push({path:'/FoodInfo',query:{businessId:businessId,foodId:foodId}});
+			toFoodInfo(foodId){
+				this.$router.push({path:'/FoodInfo',query:{foodId:foodId}});
+			},
+			newFood(businessId){
+				this.$router.push({path:'/NewFood',query:{businessId:businessId}});
 			}
 		}
 	}
@@ -150,4 +160,30 @@
 		color: #888;
 		margin-top: 2vw;
 	}
+
+
+	.wrapper .addbtn {
+		width: 100%;
+		height: 20vw;
+		border-top: solid 1px #DDD;
+		border-bottom: solid 1px #DDD;
+		background-color: #e8eef0;
+		margin-top: 4vw;
+
+		display: flex;
+		justify-content: flex-start;
+		align-items: center;
+
+		font-size: 4.5vw;
+		color: #0097FF;
+		user-select: none;
+		cursor: pointer;
+	}
+
+.wrapper .addbtn .icon-img {
+    width: 20vw;  /* 控制图片的宽度 */
+    height: 20vw;  /* 控制图片的高度 */
+    margin-right: 20vw;  /* 图片和文字的间距 */
+	margin-left: 0;
+}
 </style>
