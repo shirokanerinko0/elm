@@ -115,7 +115,6 @@ export default {
 			console.log(this.foodPrice);
 			console.log(this.businessId);
 			console.log(this.quantity);
-			
             this.$axios.post('/OneFood',{
                 foodName: this.foodName,
                 foodExplain: this.foodExplain,

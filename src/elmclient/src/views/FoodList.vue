@@ -11,7 +11,7 @@
 		<ul class="food">
 					<li v-for="(item,index) in foodArr">
 						<div @click="toFoodInfo(item.foodId)" class="food-left">
-							<img :src="item.foodImg">
+							<img :src="item.foodImg" style="width: 20vw;height: 20vw;">
 							<div class="food-left-info">
 								<h3>{{item.foodName}}</h3>
 								<p>{{item.foodExplain}}</p>
@@ -26,7 +26,7 @@
 			<i class="fa fa-plus-circle"></i>
 			<p>新增菜品</p>
 		</div>		
-		<div class="blank" style="height: 5vw"></div>
+		<div class="blank" style="height: 14vw"></div>
 		<!-- 底部菜单部分 -->
 		<Footer> </Footer> 
 	</div>
