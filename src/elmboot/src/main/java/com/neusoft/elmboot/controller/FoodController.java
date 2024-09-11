@@ -22,7 +22,7 @@ public class FoodController {
 	@Autowired
 	private FoodService foodService;
 
-	@RequestMapping("/Food")
+	@PostMapping("/Food")
 	public List<Food> listFoodByBusinessId(Food food) throws Exception{
 		return foodService.listFoodByBusinessId(food.getBusinessId());
 	}
@@ -52,7 +52,7 @@ public class FoodController {
 		return foodService.removeFood(foodId);
 	}
 	
-	@GetMapping("/Food")
+	@GetMapping("/GetOneFood")
 	public Food getFoodById(@RequestParam Integer foodId) throws Exception {
 		return foodService.getFoodById(foodId);
 	}
