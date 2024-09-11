@@ -87,7 +87,7 @@ export default {
 	},
 	methods: {
 		submitChanges() {
-			this.$axios.post('/Food', {
+			this.$axios.put('Food', {
 				food: this.food
 			}).then(response => {
 				if (response.data > 0) {
