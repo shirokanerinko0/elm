@@ -108,7 +108,10 @@ export default {
 				// this.user.userImg = "data:image/png;base64,"+base64Image;
 				// this.$setSessionStorage('business', this.business);
 				// localStorage.setItem('businessAvatar', "data:image/png;base64,"+base64Image);
-				if (response.data == 1) alert("更新成功");
+				if (response.data == 1) {alert("更新成功");
+				this.business.businessImg= "data:image/png;base64," + base64Image;
+				this.$setSessionStorage('business',this.business);
+				}
 				else alert("更新失败");
 			})
 				.catch(error => {
@@ -126,7 +129,9 @@ export default {
 				starPrice:this.business.starPrice
 			})).then(response => {
 				// this.$setSessionStorage('business', this.business);
-				if (response.data == 1) alert("更新成功");
+				if (response.data == 1) {alert("更新成功");
+				this.$setSessionStorage('business',this.business);
+				}
 				else alert("更新失败");
 			})
 				.catch(error => {
