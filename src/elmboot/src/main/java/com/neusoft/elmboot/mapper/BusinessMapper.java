@@ -27,6 +27,9 @@ public interface BusinessMapper {
 	@Select("select count(*) from business")
 	public Integer getBusinessesNumber();
 	
-	@Update("update business set businessName = #{businessName}, businessAddress = #{businessAddress}, businessExplain = # {businessExplain}, businessImg = #{businessImg}, orderTypeId = #{orderTypeId}, starPrice = #{starPrice}, deliveryPrice = #{deliveryPrice} where businessId = #{businessId}")
+	@Update("update business set businessAddress = #{businessAddress}, businessExplain = #{businessExplain}, orderTypeId = #{orderTypeId}, starPrice = #{starPrice}, deliveryPrice = #{deliveryPrice} where businessId = #{businessId}")
 	public int updateBusiness(Business business);
+	
+	@Update("update business set businessImg = #{businessImg} where businessId = #{businessId}")
+	public int updateBusinessImg(String businessImg, String businessId);
 }

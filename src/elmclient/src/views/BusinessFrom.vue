@@ -101,7 +101,7 @@ export default {
 			reader.readAsDataURL(file);
 		},
 		uploadAvatar(base64Image) {
-			this.$axios.post('/BusinessImgUpdate', {
+			this.$axios.post('BusinessImg', {
 				businessImg: "data:image/png;base64," + base64Image,
 				businessId: this.business.businessId
 			}).then(response => {
@@ -116,15 +116,15 @@ export default {
 				});
 		},
 		submitChanges() {
-			this.$axios.post('/BusinessRegistrationMore', {
-				//更新更多的商家信息
-				businessId: this.business.businessId,
-				orderTypeId: this.business.orderTypeId,
-				businessAddress: this.business.businessAddress,
-				businessExplain: this.business.businessExplain,
-				deliveryPrice: this.business.deliveryPrice,
-				starPrice: this.business.starPrice
-			}).then(response => {
+			this.$axios.put('Business', this.$qs.stringify({
+					//更新更多的商家信息
+				businessId:this.business.businessId,
+				orderTypeId:this.business.orderTypeId,
+				businessAddress:this.business.businessAddress,
+				businessExplain:this.business.businessExplain,
+				deliveryPrice:this.business.deliveryPrice,
+				starPrice:this.business.starPrice
+			})).then(response => {
 				// this.$setSessionStorage('business', this.business);
 				if (response.data == 1) alert("更新成功");
 				else alert("更新失败");

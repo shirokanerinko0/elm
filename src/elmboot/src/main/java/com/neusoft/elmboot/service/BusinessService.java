@@ -11,4 +11,5 @@ public interface BusinessService {
 	public List<Business> listBusinessByKeyWord(String keyWord);
 	public Integer saveBusiness(String userId, String password, String businessName);
 	public int updateBusiness(Business business);
+	public int updateBusinessImg(String businessImg, String businessId);
 }

@@ -52,4 +52,9 @@ public class BusinessServiceImpl implements BusinessService{
 	public int updateBusiness(Business business) {
 		return businessMapper.updateBusiness(business);
 	}
+	
+	@Override
+	public int updateBusinessImg(String businessImg, String businessId) {
+		return businessMapper.updateBusinessImg(businessImg, businessId);
+	}
 }

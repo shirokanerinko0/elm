@@ -68,9 +68,9 @@ export default {
             this.$axios.post('BusinessRegistration', null,
 			{
 				params:{
-                userId: this.user.userId,
-                password: encryptedPassword,
-                businessName: this.businessName,
+                    userId: this.user.userId,
+                    password: encryptedPassword,
+                    businessName: this.businessName,
 				}
             }).then(response => {
                 let businessId = response.data;
