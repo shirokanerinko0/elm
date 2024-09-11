@@ -34,7 +34,7 @@ public class FoodServiceImpl implements FoodService{
 	public int updateFood(Food food) {
 		Integer foodId = food.getFoodId();
 		foodMapper.removeFood(foodId);
-		return foodMapper.updateFood(food);
+		return foodMapper.saveFood(food.getFoodName(), food.getFoodExplain(), food.getFoodImg(), food.getFoodPrice(), food.getBusinessId(), food.getQuantity());
 	}
 	
 	@Override
