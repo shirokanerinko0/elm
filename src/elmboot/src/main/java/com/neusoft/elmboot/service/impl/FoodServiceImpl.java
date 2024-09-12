@@ -28,6 +28,7 @@ public class FoodServiceImpl implements FoodService{
 	@Override
 	public int removeFood(Integer foodId) {
 		foodMapper.deleteCart(foodId);
+		foodMapper.deleteOrderByFoodId(foodId);
 		return foodMapper.removeFood(foodId);
 	}
 	
@@ -37,9 +38,8 @@ public class FoodServiceImpl implements FoodService{
 		        throw new IllegalArgumentException("食品名称不能为空");
 		 }
 		Integer foodId = food.getFoodId();
-		foodMapper.deleteCart(foodId);
 		foodMapper.saveFood(food.getFoodName(), food.getFoodExplain(), food.getFoodImg(), food.getFoodPrice(), food.getBusinessId(), food.getQuantity());
-		return foodMapper.removeFood(foodId);
+		return removeFood(foodId);
 	}
 	
 	@Override

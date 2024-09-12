@@ -33,4 +33,7 @@ public interface FoodMapper {
 	
 	@Delete("delete from Cart where foodId = #{foodId}")
 	public int deleteCart(Integer foodId);
+	
+	@Delete("delete from orders where orderId in (select orderId from orderdetailet where foodId = #{foodId} ) and orderState=0")
+	public int deleteOrderByFoodId(Integer foodId);
 }
