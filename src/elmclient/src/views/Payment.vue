@@ -56,6 +56,7 @@
 		data(){
 			return {
 				orderId:this.$route.query.orderId,
+				routerType:this.$route.query.routerType,
 				orders:{
 					business:{}
 				},
@@ -76,10 +77,10 @@
 		mounted() {
 			//这里的代码是实现：一旦路由到在线支付组件，就不能回到订单确认组件。
 			//先将当前url添加到history对象中
-			history.pushState(null,null,document.URL);
+			//history.pushState(null,null,document.URL);
 			//popstate事件能够监听history对象的变化
 			window.onpopstate = () => {
-				this.$router.push({path:'/index'});
+				//this.$router.push({path:'/index'});
 			}
 		},
 		destroyed() {
@@ -97,7 +98,10 @@
 				        }
 				    }).then(response=>{
 					alert("支付成功");
+					console.log(this.routerType);
+					if(this.routerType)
 					this.$router.go(-1);
+					else this.$router.go(-2);
 				}).catch(error=>{
 					alert("商品数量不足");
 					console.error(error);

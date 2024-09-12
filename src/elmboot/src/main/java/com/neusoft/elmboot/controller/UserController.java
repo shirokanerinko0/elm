@@ -31,14 +31,14 @@ public class UserController {
 	public int getUserById(@RequestParam String userId) throws Exception {
 		return userService.getUserById(userId);
 	}
-
+    //
 	@PostMapping("/User")
 	public int saveUser(@RequestParam("userId") String userId, @RequestParam("password") String password,
 			@RequestParam("userName") String userName, @RequestParam("userSex") Integer userSex
 			) throws Exception {
 		return userService.saveUser(userId, password, userName, userSex);
 	}
-	
+	//
 	@PostMapping("/UserImg")
 	public int updateUserImg(@RequestBody Map<String, String> params) throws Exception{
 	    String userImg = params.get("userImg");

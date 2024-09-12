@@ -115,6 +115,18 @@ export default {
 			console.log(this.foodPrice);
 			console.log(this.businessId);
 			console.log(this.quantity);
+			if(!this.foodName){
+				alter("食品名称不能为空");
+				return;
+			}
+			if(this.foodExplain&&this.foodExplain.length>40){
+				alert("食品简介太长");
+				return;
+			}
+			if(this.foodName&&this.foodName.length>40){
+				alert("食品名称太长");
+				return;
+			}			
             this.$axios.post('/OneFood',{
                 foodName: this.foodName,
                 foodExplain: this.foodExplain,
@@ -137,6 +149,10 @@ export default {
 				alert("价格不能为负数");
 		      this.foodPrice = 0;
 		    }
+			if (this.foodPrice > 99999) {
+				alert("价格太高");
+			  this.foodPrice = 99999;
+			}
 		},
 		validateQuantity() {
 		    if (this.quantity < 0) {

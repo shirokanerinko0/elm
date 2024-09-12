@@ -31,12 +31,12 @@
 					style="font-size: 4vw; width: 50vw;height: 4vw;"/>
 
 			</div>
-			<div>起送价格<input type="text" v-model="business.starPrice"
+			<div>起送价格<input type="number" v-model="business.starPrice" @input="validatestarPrice"  
 					style="font-size: 4vw; width: 20vw;height: 4vw;"/>
 
 			</div>
 			<div>
-				配送价格<input type="text" v-model="business.deliveryPrice"
+				配送价格<input type="number" v-model="business.deliveryPrice" @input="validatedeliveryPrice" 
 					style="font-size: 4vw; width: 20vw;height: 4vw;"/>
 
 			</div>
@@ -120,6 +120,22 @@ export default {
 				});
 		},
 		submitChanges() {
+			if(this.business.businessAddress&&this.business.businessAddress.length>40){
+				alert("地址太长");
+				return;
+			}
+			if(this.business.businessName&&this.business.businessName.length>40){
+				alert("商家名称太长");
+				return;
+			}
+			if(this.business.businessExplain&&this.business.businessExplain.length>40){
+				alert("简介太长");
+				return;
+			}
+			if(!this.business.businessName){
+				alert("商家名称不能为空");
+				return;
+			}
 			this.$axios.put('Business', this.$qs.stringify({
 					//更新更多的商家信息
 				businessId:this.business.businessId,
@@ -142,6 +158,26 @@ export default {
 		},
 		toFoodList() {
 			this.$router.push('/foodList');
+		},
+		validatestarPrice() {
+		    if (this.business.starPrice < 0) {
+				alert("起送价格不能为负数");
+		      this.business.starPrice = 0;
+		    }
+			if (this.business.starPrice > 9999) {
+				alert("起送价格太高");
+			  this.business.starPrice = 9999;
+			}
+		},
+		validatedeliveryPrice() {
+		    if (this.business.deliveryPrice < 0) {
+				alert("配送价格不能为负数");
+		      this.business.deliveryPrice = 0;
+		    }
+			if (this.business.deliveryPrice > 9999) {
+				alert("配送价格太高");
+			  this.business.deliveryPrice = 9999;
+			}
 		}
 	},
 	components: {

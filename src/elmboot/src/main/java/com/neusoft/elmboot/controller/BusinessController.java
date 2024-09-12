@@ -35,16 +35,17 @@ public class BusinessController {
 		return businessService.listBusinessByKeyWord(keyWord);
 	}
 	
+	//
 	@PostMapping("/BusinessRegistration")
 	public Integer saveBusiness(@RequestParam String userId, @RequestParam String password, @RequestParam String businessName) {
 		return businessService.saveBusiness(userId, password, businessName);
 	}
-	
+	//
 	@PutMapping("/Business")
 	public int updateBusiness(Business business) throws Exception{
 		return businessService.updateBusiness(business);
 	}
-	
+	//
 	@PostMapping("/BusinessImg")
 	public int updateBusinessImg(@RequestBody Map<String, String> params) throws Exception {
 		String businessImg = params.get("businessImg");

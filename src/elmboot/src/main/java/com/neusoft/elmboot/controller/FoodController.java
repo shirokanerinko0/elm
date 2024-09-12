@@ -27,6 +27,7 @@ public class FoodController {
 		return foodService.listFoodByBusinessId(food.getBusinessId());
 	}
 	
+	//
 	@PostMapping("/OneFood")
 	public int saveFood(@RequestBody Map<String, Object> map) throws Exception {
 	    // 从 map 中获取参数
@@ -41,7 +42,7 @@ public class FoodController {
 	    // 将参数传递给 service
 	    return foodService.saveFood(foodName, foodExplain, foodImg, foodPrice, businessId, quantity);
 	}
-	
+	//
 	@PutMapping("/Food")
 	public int updateFood(@RequestBody Food food) throws Exception {
 		if (food.getFoodName() == null || food.getFoodName().isEmpty()) {
@@ -49,12 +50,12 @@ public class FoodController {
 		}
 		return foodService.updateFood(food);
 	}
-	
+	//
 	@DeleteMapping("/Food")
 	public int removeFood(@RequestParam Integer foodId) throws Exception {
 		return foodService.removeFood(foodId);
 	}
-	
+	//
 	@GetMapping("/GetOneFood")
 	public Food getFoodById(@RequestParam Integer foodId) throws Exception {
 		return foodService.getFoodById(foodId);
