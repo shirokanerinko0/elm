@@ -74,8 +74,10 @@
 					password:encryptedPassword
 				})).then(response=>{
 					let user = response.data;
-					if(user==null){
+					console.log(user);
+					if(!user){
 						alert('用户名或密码不正确！');
+						return;
 					}else{
 						//sessionstorage有容量限制，为了防止数据溢出，所以不将userImg数据放入session中
 						localStorage.setItem('userAvatar', user.userImg);
@@ -103,7 +105,6 @@
 						this.$router.go(-1);
 					}
 				}).catch(error=>{
-					alert('用户名或密码不正确！');
 					console.error(error);
 				});
 				
