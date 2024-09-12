@@ -78,9 +78,13 @@
 				businessId:this.businessId
 			})).then(response=>{
 				this.cartArr = response.data;
+				if(this.cartArr.length===0){
+					this.$router.go(-1);
+				}
 			}).catch(error=>{
 				console.error(error);
 			});
+			
 		},
 		computed:{
 			totalPrice(){

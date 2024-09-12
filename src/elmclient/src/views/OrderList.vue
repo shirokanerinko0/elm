@@ -101,7 +101,7 @@
 				orders.isShowDetailet = !orders.isShowDetailet;
 			},
 			toPayment(orders){
-				this.$router.push({path:'/payment',query:{orderId:orders.orderId}});
+				this.$router.push({path:'/payment',query:{orderId:orders.orderId,routerType:1}});
 			}
 		},
 		components:{
