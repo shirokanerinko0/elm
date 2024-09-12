@@ -75,8 +75,8 @@ export default {
             }).then(response => {
                 let businessId = response.data;
 				console.log(businessId);
-                if(businessId==null){
-					alert('失败');
+                if(!businessId){
+					alert('密码错误');
 				}
 				else {
                     alert('恭喜成为商家！');

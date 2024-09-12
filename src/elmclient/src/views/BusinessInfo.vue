@@ -230,7 +230,13 @@
 				});
 			},
 			toOrder(){
+				let quantity = 0;
+				for(let item of this.foodArr){
+					quantity += item.quantity;
+				}
+				if(quantity)
 				this.$router.push({path:'/orders',query:{businessId:this.business.businessId}});
+				else alert("没有选购商品");
 			},
 			detailetShow(){
 				this.isShowDetailet = !this.isShowDetailet;
