@@ -75,12 +75,12 @@ export default {
             }).then(response => {
                 let businessId = response.data;
 				console.log(businessId);
-                if(businessId==null){
+                if(!businessId){
 					alert('失败');
 				}
 				else {
                     alert('恭喜成为商家！');
-					if(businessId!=null){
+					if(businessId){
 						this.$axios.post('Business',null,{
 							params:{
 							businessId:businessId,

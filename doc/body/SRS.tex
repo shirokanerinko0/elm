@@ -6,7 +6,12 @@
 
 \subsection{管理人员需求}
 \begin{itemize}
-    \item{商家使用}：商家能够注册并向平台提供自己的店铺信息，注册店铺。
+    \item{商家使用}：商家能够注册并向平台提供自己的店铺信息，注册店铺。如图\ref{fig:dd}
+    \begin{figure}[htbp]
+        \centering
+        \includegraphics[width=1\textwidth]{shangjiashiyong}
+        \caption{商家使用与注册}\label{fig:dd}
+    \end{figure}
     \item{用户使用}：用户可以注册登录，进行下单。
 \end{itemize}
 
@@ -15,6 +20,12 @@
 \subsubsection{普通用户需求}
 \begin{itemize}
     \item{下单流畅}：使用时应该流畅，能够随时中断，随时返回到上一页面以及返回主页等页面。并且在订单未支付时候返回，应该保留历史订单，之后支付。
+    下单流程如图\ref{fig:ds}
+    \begin{figure}[htbp]
+        \centering
+        \includegraphics[width=0.5\textwidth]{xiadan}
+        \caption{下单活动图}\label{fig:ds}
+    \end{figure}
     \item{购物透明}：能够随时看到自己已经购入了什么，需要花费多少；正确显示历史购买记录。
     \item {搜索功能}：可以搜索到相关商家。
     \item {修改个人信息}：可以修改个人信息，地址。
@@ -27,19 +38,8 @@
 \end{itemize}
 
 \section{非功能需求}
-可以正确显示页面。
+\begin{itemize}
+    \item{页面适配}：可以正确显示页面
+    \item{用户数据安全}：用户密码加密信息安全；商家只能修改自己的商家信息与食品页面。
+\end{itemize}
 
-\section{UML图}
-注册与登录如图
-\begin{figure}[htbp]
-    \centering
-    \includegraphics[width=1\textwidth]{login}
-    \caption{注册与登录活动图}\label{fig:ds}
-\end{figure}
-
-用户如何成为商家如图\ref{fig:dd}
-\begin{figure}[htbp]
-    \centering
-    \includegraphics[width=1\textwidth]{utobe}
-    \caption{用户转化为商家}\label{fig:dd}
-\end{figure}
