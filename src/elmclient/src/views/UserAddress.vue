@@ -85,11 +85,9 @@
 				if(!confirm('确认要删除此送货地址吗？')){
 					return;
 				}
-				
+				console.log(daId);
 				this.$axios.delete('DeliveryAddress', {
-				    params: {
-				        daId: this.daId
-				    }
+				   params: { daId: daId }
 				}).then(response=>{
 					if(response.data>0){
 						let deliveryAddress = this.$getLocalStorage(this.user.userId);

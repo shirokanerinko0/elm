@@ -25,7 +25,7 @@
 			</div>
 			<div class="food-input-group">
 				<label>价格</label>
-				<input type="text" v-model="food.foodPrice">
+				<input type="number" v-model="food.foodPrice" @input="validatePrice">
 			</div>
 			<div class="food-input-group">
 				<label>简介</label>
@@ -33,7 +33,7 @@
 			</div>
 			<div class="food-input-group">
 				<label>数量</label>
-				<input type="text" v-model="food.quantity">
+				<input type="number" v-model="food.quantity" @input="validateQuantity">
 			</div>
 			<div class="button-group">
 				<button @click="submitChanges" class="save-button">保存更改</button>
@@ -87,9 +87,17 @@ export default {
 	methods: {
 		submitChanges() {
 			if (!this.food.foodName) {
-			        alert('食品名称不能为空');
-			        return;
+			    alert('食品名称不能为空');
+			    return;
 			}
+			if(this.food.foodExplain&&this.food.foodExplain.length>40){
+				alert("食品简介太长");
+				return;
+			}
+			if(this.food.foodName&&this.food.foodName.length>40){
+				alert("食品名称太长");
+				return;
+			}			
 			console.log(this.food);
 			this.$axios.put('Food', 
 				this.food
@@ -130,6 +138,22 @@ export default {
 				this.food.foodImg = "data:image/png;base64," + base64Image;
 			};
 			reader.readAsDataURL(file);
+		},
+		validatePrice() {
+		    if (this.food.foodPrice < 0) {
+				alert("价格不能为负数");
+		      this.food.foodPrice = 0;
+		    }
+			if (this.food.foodPrice > 99999) {
+				alert("价格太高");
+			  this.food.foodPrice = 99999;
+			}
+		},
+		validateQuantity() {
+		    if (this.food.quantity < 0) {
+				alert("数量不能为负数");
+		      this.food.quantity = 0;
+		    }
 		}
 	}
 }
