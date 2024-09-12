@@ -62,7 +62,6 @@
 		created() {
 			this.user = this.$getSessionStorage('user');
 			this.deliveryaddress = this.$getLocalStorage(this.user.userId);
-			
 			//查询当前商家
 			this.$axios.post('Business',this.$qs.stringify({
 				businessId:this.businessId
@@ -71,7 +70,6 @@
 			}).catch(error=>{
 				console.error(error);
 			});
-			
 			//查询当前用户在购物车中的当前商家食品列表
 			this.$axios.post('Carts',this.$qs.stringify({
 				userId:this.user.userId,
@@ -84,7 +82,6 @@
 			}).catch(error=>{
 				console.error(error);
 			});
-			
 		},
 		computed:{
 			totalPrice(){
@@ -116,7 +113,6 @@
 					alert('请选择送货地址！');
 					return;
 				}
-				
 				//创建订单
 				this.$axios.post('Orders',this.$qs.stringify({
 					userId:this.user.userId,

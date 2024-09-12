@@ -104,6 +104,7 @@ export default {
 			).then(response => {
 				if (response.data > 0) {
 					alert("更新成功");
+					this.$router.go(-1);
 				} else {
 					alert("更新失败");
 				}
