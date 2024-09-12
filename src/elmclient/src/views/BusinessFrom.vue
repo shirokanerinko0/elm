@@ -5,7 +5,8 @@
 			<p>我的商家</p>
 		</header>
 		<div class="user-info">
-			<h3>商家名称： {{ this.business.businessName }}</h3>
+			<h3>商家名称：<input type="text" v-model="business.businessName"
+				style="font-size: 4vw; width: 50vw;height: 4vw;"/></h3>
 			<div class="avatar">
 				<img :src="this.business.businessImg || defaultAvatar" alt="商家头像" />
 				<input type="file" @change="handleFileChange" ref="fileInput" style="display: none;" />
@@ -126,7 +127,8 @@ export default {
 				businessAddress:this.business.businessAddress,
 				businessExplain:this.business.businessExplain,
 				deliveryPrice:this.business.deliveryPrice,
-				starPrice:this.business.starPrice
+				starPrice:this.business.starPrice,
+				businessName:this.business.businessName
 			})).then(response => {
 				// this.$setSessionStorage('business', this.business);
 				if (response.data == 1) {alert("更新成功");
