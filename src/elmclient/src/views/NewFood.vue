@@ -116,7 +116,7 @@ export default {
 			console.log(this.businessId);
 			console.log(this.quantity);
 			if(!this.foodName){
-				alter("食品名称不能为空");
+				alert("食品名称不能为空");
 				return;
 			}
 			if(this.foodExplain&&this.foodExplain.length>40){
@@ -159,6 +159,7 @@ export default {
 				alert("数量不能为负数");
 		      this.quantity = 0;
 		    }
+			this.quantity=Math.floor(this.quantity);
 		}
     }
 }

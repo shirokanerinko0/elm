@@ -155,6 +155,7 @@ export default {
 				alert("数量不能为负数");
 		      this.food.quantity = 0;
 		    }
+			this.food.quantity=Math.floor(this.food.quantity);
 		}
 	}
 }

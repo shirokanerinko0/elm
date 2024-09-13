@@ -11,7 +11,7 @@
 		<ul class="addresslist">
 			<li v-for="item in deliveryAddressArr">
 				<div class="addresslist-left" @click="setDeliveryAddress(item)">
-					<h3>{{item.contactName}}{{item.contactSex | sexFilter}} {{item.contactTel}}</h3>
+					<h3>{{item.contactName}}{{item.contactSex==1?'先生':'女士'}} {{item.contactTel}}</h3>
 					<p>{{item.address}}</p>
 				</div>
 				<div class="addresslist-right">
